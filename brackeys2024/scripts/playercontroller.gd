@@ -1,34 +1,51 @@
-extends CharacterBody3D
+extends RigidBody3D
 
+@onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-# Movement variables
-var move_speed: float = 5.0  # Speed of forward/backward movement
-var rotation_speed: float = 1.5  # Speed of rotation (turning)
-var acceleration_forward: float = 2.0  # Acceleration forward
-var acceleration_backward: float = 0.5 # Acceleration backward
-var deceleration: float = 0.75 # Water drag
+# Movement
+var move_speed: float = 3.0  # Speed of forward/backward movement
+var rotation_speed: float = 0.5  # Speed of rotation (turning)
+var acceleration_forward: float = 750  # Acceleration forward
+var acceleration_backward: float = 250 # Acceleration backward
 
-func _physics_process(delta: float) -> void:
+# Buoyancy
+var float_force: float = 1.4
+var water_drag: float = 0.028
+var water_angular_drag: float = 0.05
+const water_height: float = 0.0
+var is_submerged: bool = false
+
+func _physics_process(_delta):
+	var depth = water_height - global_position.y
+	is_submerged = false
+	if depth > 0:
+		is_submerged = true
+		apply_central_force(Vector3.UP * float_force * gravity * depth)
+
+func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
+	# get delta-time
+	var delta = get_physics_process_delta_time()
 	
 	# player input
 	var forward_input = Input.get_action_strength("ui_up") - Input.get_action_strength("ui_down")
 	var turn_input = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
+		
 	
-	# rotation
-	rotation.y += turn_input * rotation_speed * delta
+	# rotation as torque
+	if turn_input != 0:
+		var torque = Vector3.UP * turn_input * rotation_speed
+		apply_torque_impulse(torque * delta)
 	
 	# forward direction based on rotation
 	var forward_direction = -transform.basis.z
 	
-	
-	# accelerate or decelerate forward movement
-	var target_speed = forward_input * move_speed
 	if forward_input > 0: # forward acceleration
-		velocity = velocity.move_toward(forward_direction * target_speed, acceleration_forward * delta)
+		var forward_force = forward_direction * forward_input * acceleration_forward
+		apply_central_force(forward_force * delta)
 	elif forward_input <0: # backward acceleration
-		velocity = velocity.move_toward(forward_direction * target_speed, acceleration_backward * delta) 
-	else: #decelerate
-		velocity = velocity.move_toward(Vector3.ZERO, deceleration * delta)
-	
-	# move ship
-	move_and_slide()
+		var backward_force = forward_direction * forward_input * acceleration_backward
+		apply_central_force(backward_force * delta)
+
+	if is_submerged: #smoothed upwards buoyancy
+		state.linear_velocity *= 1 - water_drag
+		state.angular_velocity *= 1 - water_angular_drag
