@@ -22,8 +22,6 @@ glow_bloom = 0.16
 fog_mode = 1
 fog_sun_scatter = 0.19
 fog_density = 1.0
-fog_depth_begin = 325.0
-fog_depth_end = 750.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_jju8x"]
 subdivide_width = 200
@@ -31,10 +29,6 @@ subdivide_depth = 200
 orientation = 1
 
 [node name="Main" type="Node3D"]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.822499, -0.490774, 0.287466, 0.00610901, 0.497767, 0.867289, -0.568734, 0.7151, -0.406414, 0, 117, 0)
-shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5kcj7")

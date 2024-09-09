@@ -5,7 +5,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_0pnpw")
-shader_parameter/albedo = Color(0.0725381, 0.564582, 0.890914, 1)
+shader_parameter/albedo = Color(0.00294708, 0.170592, 0.291729, 1)
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.02
 shader_parameter/testdirection = null
