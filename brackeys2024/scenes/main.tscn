@@ -22,6 +22,8 @@ fog_enabled = true
 fog_mode = 1
 fog_sun_scatter = 0.19
 fog_density = 1.0
+fog_depth_begin = 325.0
+fog_depth_end = 750.0
 
 [sub_resource type="Gradient" id="Gradient_7aq66"]
 
@@ -44,9 +46,13 @@ normal_texture = SubResource("NoiseTexture2D_ysqkk")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_b5wxq"]
 material = SubResource("StandardMaterial3D_dpkuy")
-size = Vector2(100, 100)
+size = Vector2(1000, 1000)
 
 [node name="Main" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.822499, -0.490774, 0.287466, 0.00610901, 0.497767, 0.867289, -0.568734, 0.7151, -0.406414, 0, 117, 0)
+shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5kcj7")
@@ -54,11 +60,11 @@ environment = SubResource("Environment_5kcj7")
 [node name="Ship" parent="WorldEnvironment" instance=ExtResource("1_fp2v6")]
 
 [node name="TopCamera" type="Camera3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 0.490554, 0.871411, 0, -0.871411, 0.490554, 0, 7, 8.55722)
+transform = Transform3D(1, 0, 0, 0, 0.207912, 0.978148, 0, -0.978148, 0.207912, 0, 250, 50)
 current = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.397566, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.398, 10)
 gi_mode = 2
 gi_lightmap_scale = 1
 mesh = SubResource("PlaneMesh_b5wxq")
