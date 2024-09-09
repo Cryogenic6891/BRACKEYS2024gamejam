@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://umwbfpp35gvj"]
+
+[ext_resource type="Shader" path="res://shaders/wave.gdshader" id="1_0pnpw"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_0pnpw")
+shader_parameter/albedo = Color(0.0725381, 0.564582, 0.890914, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.02
+shader_parameter/testdirection = null
+shader_parameter/speeed = null
+shader_parameter/steeepness = 1.0
+shader_parameter/aamplitude = 1.0
+shader_parameter/waavelength = 1.0
