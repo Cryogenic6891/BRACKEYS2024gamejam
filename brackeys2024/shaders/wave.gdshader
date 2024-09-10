@@ -1,39 +1,100 @@
 shader_type spatial;
 
-uniform vec3 albedo: source_color;
-uniform float metallic: hint_range(0.0, 1.0, 0.1) = 0;
-uniform float roughness: hint_range(0.0, 1.0, 0.1) = 0.02;
+uniform vec3 albedo : source_color;
+uniform vec3 albedo2 : source_color;
 
-uniform vec2 testdirection;
-uniform float speeed;
-uniform float steeepness : hint_range(0.0, 1.0, 0.05) = 1.0;
-uniform float aamplitude = 1.0;
-uniform float waavelength = 1.0;
+uniform vec4 water_colour: source_color;
+uniform vec4 deep_water_colour: source_color;
+uniform float time_scale : hint_range(0.0, 0.2, 0.005) = 0.025;
 
-// direction.y represents z axis (since it is 2D vec)
-vec3 gerstner(vec3 vertex, vec2 direction, float time, float speed, float steepness, float amplitude, float wavelength){
-	float displaced_x = vertex.x + (steepness/wavelength) * direction.x * cos(wavelength * dot(direction, vertex.xz) + speed * time);
-	float displaced_z = vertex.z + (steepness/wavelength) * direction.y * cos(wavelength * dot(direction, vertex.xz) + speed * time);
-	float displaced_y = vertex.y + amplitude * sin(wavelength * dot(direction, vertex.xz) + speed * time);
-	return vec3(displaced_x, displaced_y, displaced_z);
+uniform float metallic : hint_range(0.0, 1.0) = 0;
+uniform float roughness : hint_range(0.0, 1.0) = 0.02;
+
+uniform sampler2D texture_normal;
+uniform sampler2D texture_normal2;
+
+uniform vec2 wave_direction = vec2(2.0,0.0);
+uniform vec2 wave_2_direction = vec2(0.0,1.0);
+
+uniform float edge_scale = 0.1;
+uniform float near = 0.5;
+uniform float far = 100.0;
+uniform vec3 edge_color : source_color;
+
+uniform vec4 color_deep : source_color;
+uniform vec4 color_shallow : source_color;
+uniform float beers_law = 2.0;
+uniform float depth_offset = -0.75;
+
+float fresnel(float amount, vec3 normal, vec3 view)
+{
+	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
 }
 
-vec3 gerstner_normal(vec3 vertex, vec2 direction, float time, float speed, float steepness, float amplitude, float wavelength) {
-    float cosfactor = cos(wavelength * dot(direction, vertex.xz + speed * time));
-	float sinfactor = sin(wavelength * dot(direction, vertex.xz + speed * time));
-	float x_normal = -direction.x * wavelength * amplitude * cosfactor;
-	float z_normal = -direction.y * wavelength * amplitude * cosfactor;
-	float y_normal = 1.0 - (steepness/wavelength) * wavelength * amplitude * sinfactor;
-	return vec3(x_normal, y_normal, z_normal);
+float edge(float depth) {
+	depth = 2.0 * depth - 1.0;
+	return near * far / (far + depth * (near - far));
 }
 
-void vertex(){
-	VERTEX = gerstner(VERTEX, normalize(testdirection), TIME, speeed, steeepness, aamplitude, waavelength);
-	NORMAL = gerstner_normal(VERTEX, normalize(testdirection), TIME, speeed, steeepness, aamplitude, waavelength);
+uniform sampler2D screen_texture: hint_depth_texture, filter_linear_mipmap;
+uniform sampler2D depth_texture: hint_depth_texture, filter_linear_mipmap;
+uniform float foam_level = 0.4;
+
+varying float wave_height;
+
+uniform sampler2D waves;
+uniform float noise_scale = 10.0;
+uniform float height_scale = 0.15;
+
+// varying
+varying float height;
+varying vec3 world_pos;
+
+// Gerstner wave function
+
+void vertex() {
+	world_pos = (MODEL_MATRIX * vec4(VERTEX.xyz, 1.0)).xyz;
+	height = texture(waves,world_pos.xz/ noise_scale + TIME * time_scale).r;
+	VERTEX.y += height * height_scale;
 }
 
-void fragment(){
-	ALBEDO = albedo;
+void fragment() {
+	vec3 normal = texture(texture_normal,world_pos.xz).rgb;
+	
+	vec2 time = (TIME * wave_direction) * time_scale;
+	vec2 time2 = (TIME * wave_2_direction) * time_scale;
+	
+	vec3 normal_blend = mix(texture(texture_normal, world_pos.xz + time).rgb, texture(texture_normal2,world_pos.xz + time).rgb, 0.5);
+	
+	float fresnel = fresnel(5.0, NORMAL, VIEW);
+	
+	vec3 surface_color = mix(albedo, albedo2, fresnel); // Interpolate albedo values by frensel
+	
+	float depth = PROJECTION_MATRIX[3][2] / ( PROJECTION_MATRIX[2][2]);
+	float depth_blend = exp((depth+VERTEX.z + depth_offset) * -beers_law);
+	depth_blend = clamp(1.0 - depth_blend, 0.0, 1.0);
+	float depth_blend_power = clamp(pow(depth_blend, 2.5), 0.0, 1.0);
+	
+	vec3 screen_color = textureLod(screen_texture, SCREEN_UV, depth_blend_power * 2.5).rgb;
+	vec3 depth_color = mix(color_shallow.rgb, color_deep.rgb, depth_blend_power);
+	vec3 color = mix(screen_color * depth_color, depth_color * 0.25, depth_blend_power * 0.5);
+	
+	float z_depth = edge(texture(depth_texture, SCREEN_UV).x);
+	float z_pos = edge(FRAGCOORD.z);
+	float z_dif = z_depth - z_pos;
+	
+	vec3 depth_color_adj = mix(edge_color, color, step(edge_scale, z_dif));
+	
+    // Refraction handling (can refine this part)
+	vec2 offset = vec2(0.0);
+	vec4 bg = texture(screen_texture, world_pos.xz + (offset * 0.2));
+
+    // Set final color and shading
+	ALBEDO = clamp(surface_color + depth_color_adj,vec3(0.0),vec3(1.0));
 	METALLIC = metallic;
 	ROUGHNESS = roughness;
+	NORMAL_MAP = normal_blend;
+	SPECULAR = 0.4;
+	ROUGHNESS = 0.05;
+	ALPHA = 1.0;
 }
