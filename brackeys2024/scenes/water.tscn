@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://8jln4u20f5mh"]
+
+[ext_resource type="Material" uid="uid://umwbfpp35gvj" path="res://shaders/wave_material.tres" id="1_sn8eh"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_jju8x"]
+size = Vector2(100, 100)
+subdivide_width = 200
+subdivide_depth = 200
+orientation = 1
+
+[node name="Water" type="MeshInstance3D"]
+mesh = SubResource("QuadMesh_jju8x")
+surface_material_override/0 = ExtResource("1_sn8eh")
