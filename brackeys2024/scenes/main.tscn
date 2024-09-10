@@ -1,7 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://brb8t3f02kodw"]
 
 [ext_resource type="PackedScene" uid="uid://6gbsieuh65ij" path="res://scenes/ship.tscn" id="1_fp2v6"]
-[ext_resource type="Material" uid="uid://umwbfpp35gvj" path="res://shaders/wave_material.tres" id="2_ht5c7"]
+[ext_resource type="PackedScene" uid="uid://8jln4u20f5mh" path="res://scenes/water.tscn" id="2_4hn3y"]
+[ext_resource type="Script" path="res://scripts/water.gd" id="3_coner"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3r0lv"]
 sky_top_color = Color(0.613113, 0.677007, 0.766052, 1)
@@ -23,11 +24,6 @@ fog_mode = 1
 fog_sun_scatter = 0.19
 fog_density = 1.0
 
-[sub_resource type="QuadMesh" id="QuadMesh_jju8x"]
-subdivide_width = 200
-subdivide_depth = 200
-orientation = 1
-
 [node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -40,9 +36,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.175718, 0)
 transform = Transform3D(1, 0, 0, 0, 0.73354, 0.679646, 0, -0.679646, 0.73354, 0, 3.34409, 5.25544)
 current = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
-mesh = SubResource("QuadMesh_jju8x")
-surface_material_override/0 = ExtResource("2_ht5c7")
+[node name="Water" parent="." instance=ExtResource("2_4hn3y")]
+script = ExtResource("3_coner")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+light_color = Color(1, 1, 0.560784, 1)
+light_angular_distance = 3.27
+shadow_enabled = true
