@@ -34,7 +34,7 @@ environment = SubResource("Environment_5kcj7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.175718, 0)
 
 [node name="TopCamera" type="Camera3D" parent="WorldEnvironment" node_paths=PackedStringArray("player_node")]
-transform = Transform3D(1, 0, 0, 0, 0.73354, 0.679646, 0, -0.679646, 0.73354, 0, 12.1702, 5.25544)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 52.802, 5.25544)
 current = true
 script = ExtResource("2_wi2wd")
 player_node = NodePath("../Ship")
