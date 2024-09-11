@@ -13,7 +13,7 @@ albedo_texture = ExtResource("3_qxr68")
 script = ExtResource("1_ep2o1")
 
 [node name="Fishing Boat" parent="." instance=ExtResource("2_relom")]
-transform = Transform3D(-0.06, 0, 5.24537e-09, 0, 0.06, 0, -5.24537e-09, 0, -0.06, 0, 0.513775, 0)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0)
 
 [node name="Ship_Auxillary_Cabin" parent="Fishing Boat" index="0"]
 material_override = SubResource("StandardMaterial3D_7cjsj")
@@ -67,6 +67,7 @@ material_override = SubResource("StandardMaterial3D_7cjsj")
 material_override = SubResource("StandardMaterial3D_7cjsj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 shape = SubResource("BoxShape3D_v5mps")
 
 [editable path="Fishing Boat"]
