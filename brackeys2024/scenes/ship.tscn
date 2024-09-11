@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b76c418knjxm2"]
+[gd_scene load_steps=4 format=3 uid="uid://c4bpb6fr6hvrg"]
 
 [ext_resource type="Script" path="res://scripts/playercontroller.gd" id="1_ep2o1"]
 [ext_resource type="PackedScene" uid="uid://b6t02aqwvkdu6" path="res://assets/Fishing Boat.fbx" id="2_kvvvr"]

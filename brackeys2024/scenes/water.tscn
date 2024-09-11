@@ -7,7 +7,7 @@ size = Vector2(256, 256)
 subdivide_width = 64
 subdivide_depth = 64
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h356n"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_owo6h"]
 render_priority = 0
 shader = ExtResource("1_rs7ub")
 shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
@@ -15,10 +15,10 @@ shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
 shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
 shader_parameter/distortion_speed = 2.0
 shader_parameter/tile = Vector2(5, 5)
-shader_parameter/height = 2.0
-shader_parameter/wave_size = Vector2(2, 2)
-shader_parameter/wave_speed = 1.5
+shader_parameter/height = 60.0
+shader_parameter/wave_size = Vector2(6, 6)
+shader_parameter/wave_speed = 2.0
 
 [node name="Water" type="MeshInstance3D"]
 mesh = SubResource("PlaneMesh_4fm4s")
-surface_material_override/0 = SubResource("ShaderMaterial_h356n")
+surface_material_override/0 = SubResource("ShaderMaterial_owo6h")

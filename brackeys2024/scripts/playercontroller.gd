@@ -14,6 +14,8 @@ var water_drag: float = 0.028
 var water_angular_drag: float = 0.05
 const water_height: float = 0.0
 var is_submerged: bool = false
+@export var water: MeshInstance3D
+
 
 func _physics_process(_delta):
 	var depth = water_height - global_position.y
