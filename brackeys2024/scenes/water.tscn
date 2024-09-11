@@ -1,13 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://8jln4u20f5mh"]
+[gd_scene load_steps=4 format=3 uid="uid://8jln4u20f5mh"]
 
-[ext_resource type="Material" uid="uid://umwbfpp35gvj" path="res://shaders/wave_material.tres" id="1_sn8eh"]
+[ext_resource type="Shader" path="res://shaders/wave.gdshader" id="1_rs7ub"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_jju8x"]
-size = Vector2(1000, 1000)
-subdivide_width = 200
-subdivide_depth = 200
-orientation = 1
+[sub_resource type="PlaneMesh" id="PlaneMesh_4fm4s"]
+size = Vector2(256, 256)
+subdivide_width = 64
+subdivide_depth = 64
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h356n"]
+render_priority = 0
+shader = ExtResource("1_rs7ub")
+shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
+shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(5, 5)
+shader_parameter/height = 2.0
+shader_parameter/wave_size = Vector2(2, 2)
+shader_parameter/wave_speed = 1.5
 
 [node name="Water" type="MeshInstance3D"]
-mesh = SubResource("QuadMesh_jju8x")
-surface_material_override/0 = ExtResource("1_sn8eh")
+mesh = SubResource("PlaneMesh_4fm4s")
+surface_material_override/0 = SubResource("ShaderMaterial_h356n")

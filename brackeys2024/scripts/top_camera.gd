@@ -14,7 +14,6 @@ func _physics_process(delta):
 
 func follow_player(delta):
 	if player_node:
-		
 		global_position.x = player_node.global_position.x
 		global_position.z = player_node.global_position.z
 		global_position.y = camera_distance

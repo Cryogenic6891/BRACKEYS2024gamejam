@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b6t02aqwvkdu6"
-path="res://.godot/imported/Fishing Boat.fbx-62da6a057a2d8f332ead87be52f01bcf.scn"
+uid="uid://mw478tqorhdj"
+path="res://.godot/imported/Map Tiles.glb-c3f8426f658df0119bb7a3965173d046.scn"
 
 [deps]
 
-source_file="res://assets/Fishing Boat.fbx"
-dest_files=["res://.godot/imported/Fishing Boat.fbx-62da6a057a2d8f332ead87be52f01bcf.scn"]
+source_file="res://assets/Map Tiles.glb"
+dest_files=["res://.godot/imported/Map Tiles.glb-c3f8426f658df0119bb7a3965173d046.scn"]
 
 [params]
 
@@ -27,11 +27,10 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=true
+animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-fbx/importer=0
-fbx/allow_geometry_helper_nodes=false
-fbx/embedded_image_handling=1
+gltf/naming_version=1
+gltf/embedded_image_handling=1
