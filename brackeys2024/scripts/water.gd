@@ -16,8 +16,8 @@ func _ready():
 	#noise_scale = material.get_shader_parameter("")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
-func get_height(world_position: Vector3):
+func get_height(_world_position: Vector3):
 	pass

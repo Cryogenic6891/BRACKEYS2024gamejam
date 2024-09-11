@@ -12,7 +12,7 @@ var current_zoom: float
 func _physics_process(delta):
 	follow_player(delta)
 
-func follow_player(delta):
+func follow_player(_delta):
 	if player_node:
 		global_position.x = player_node.global_position.x
 		global_position.z = player_node.global_position.z

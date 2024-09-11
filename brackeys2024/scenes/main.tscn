@@ -1,6 +1,4 @@
-
 [gd_scene load_steps=10 format=3 uid="uid://brb8t3f02kodw"]
-
 
 [ext_resource type="PackedScene" uid="uid://8jln4u20f5mh" path="res://scenes/water.tscn" id="2_4hn3y"]
 [ext_resource type="Script" path="res://scripts/playercontroller.gd" id="2_hutcd"]
