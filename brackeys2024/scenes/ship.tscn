@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4bpb6fr6hvrg"]
+[gd_scene load_steps=4 format=3 uid="uid://b76c418knjxm2"]
 
 [ext_resource type="Script" path="res://scripts/playercontroller.gd" id="1_ep2o1"]
 [ext_resource type="PackedScene" uid="uid://b6t02aqwvkdu6" path="res://assets/Fishing Boat.fbx" id="2_kvvvr"]
@@ -13,3 +13,11 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_6smor")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="BackRight" type="Marker3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4.8, 17)
+
+[node name="BackLeft" type="Marker3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 4.8, 17)
