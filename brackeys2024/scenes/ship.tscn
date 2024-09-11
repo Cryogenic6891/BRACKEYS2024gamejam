@@ -8,7 +8,62 @@
 [node name="Ship" type="RigidBody3D"]
 script = ExtResource("1_ep2o1")
 
+[node name="Fishing Boat" parent="." instance=ExtResource("2_relom")]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0)
+
+[node name="Ship_Auxillary_Cabin" parent="Fishing Boat" index="0"]
+material_override = SubResource("StandardMaterial3D_7cjsj")
+
+[node name="Ship_Cabin" parent="Fishing Boat" index="1"]
+material_override = SubResource("StandardMaterial3D_7cjsj")
+
+[node name="Ship_CraneFront" parent="Fishing Boat" index="2"]
+material_override = SubResource("StandardMaterial3D_7cjsj")
+
+[node name="Ship_CraneRear" parent="Fishing Boat" index="3"]
+material_override = SubResource("StandardMaterial3D_7cjsj")
+
+[node name="Ship_Hull" parent="Fishing Boat" index="4"]
+material_override = SubResource("StandardMaterial3D_7cjsj")
+
+[node name="Ship_Line_001" parent="Fishing Boat" index="5"]
+material_override = SubResource("StandardMaterial3D_7cjsj")
+
+[node name="Ship_Line_002" parent="Fishing Boat" index="6"]
+material_override = SubResource("StandardMaterial3D_7cjsj")
+
+[node name="Ship_LineReelBig" parent="Fishing Boat" index="7"]
+material_override = SubResource("StandardMaterial3D_7cjsj")
+
+[node name="Ship_LineReelSmall" parent="Fishing Boat" index="8"]
+material_override = SubResource("StandardMaterial3D_7cjsj")
+
+[node name="Ship_SmokeStackBig" parent="Fishing Boat" index="9"]
+material_override = SubResource("StandardMaterial3D_7cjsj")
+
+[node name="Ship_SmokeStackSmall_001" parent="Fishing Boat" index="10"]
+material_override = SubResource("StandardMaterial3D_7cjsj")
+
+[node name="Ship_SmokeStackSmall_002" parent="Fishing Boat" index="11"]
+material_override = SubResource("StandardMaterial3D_7cjsj")
+
+[node name="Ship_FishingHook" parent="Fishing Boat" index="12"]
+material_override = SubResource("StandardMaterial3D_7cjsj")
+
+[node name="Ship_SupportWire_001" parent="Fishing Boat" index="13"]
+material_override = SubResource("StandardMaterial3D_7cjsj")
+
+[node name="Ship_SupportWire_002" parent="Fishing Boat" index="14"]
+material_override = SubResource("StandardMaterial3D_7cjsj")
+
+[node name="Ship_NetDecor" parent="Fishing Boat" index="15"]
+material_override = SubResource("StandardMaterial3D_7cjsj")
+
+[node name="Ship_Anchor" parent="Fishing Boat" index="16"]
+material_override = SubResource("StandardMaterial3D_7cjsj")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 shape = SubResource("BoxShape3D_v5mps")
 
 [node name="Fishing Boat2" parent="." instance=ExtResource("2_h3qv0")]
