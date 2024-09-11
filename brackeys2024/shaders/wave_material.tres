@@ -4,11 +4,13 @@
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_p4et2"]
 noise_type = 3
+frequency = 0.0165
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qtpiv"]
 seamless = true
 seamless_blend_skirt = 1.0
 as_normal_map = true
+bump_strength = 32.0
 noise = SubResource("FastNoiseLite_p4et2")
 
 [resource]
@@ -16,10 +18,10 @@ render_priority = 0
 shader = ExtResource("1_0pnpw")
 shader_parameter/water_colour = Color(1, 1, 1, 1)
 shader_parameter/deep_water_colour = Color(3.85046e-07, 0, 0.822486, 1)
-shader_parameter/wave_a = Vector3(1, 0.25, 10)
-shader_parameter/wave_a_dir = Vector2(0.65, 0)
-shader_parameter/wave_b = Vector3(1, 0.15, 20)
-shader_parameter/wave_b_dir = Vector2(5, 1)
+shader_parameter/wave_a = Vector3(1, 0.8, 75)
+shader_parameter/wave_a_dir = Vector2(10, 10)
+shader_parameter/wave_b = Vector3(1, 0.8, 12)
+shader_parameter/wave_b_dir = Vector2(-1, 1)
 shader_parameter/wave_c = Vector3(1, 0.1, 1)
 shader_parameter/wave_c_dir = Vector2(1, 0.5)
 shader_parameter/foam_level = 0.4
