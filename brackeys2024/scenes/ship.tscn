@@ -1,15 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://6gbsieuh65ij"]
 
 [ext_resource type="Script" path="res://scripts/playercontroller.gd" id="1_ep2o1"]
-[ext_resource type="PackedScene" uid="uid://dftxeveq5qvwi" path="res://assets/Fishing Boat.gltf" id="2_relom"]
+[ext_resource type="PackedScene" uid="uid://bydtr8n1pa25k" path="res://assets/Fishing Boat.fbx" id="2_h3qv0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v5mps"]
 
 [node name="Ship" type="RigidBody3D"]
 script = ExtResource("1_ep2o1")
 
-[node name="Fishing Boat" parent="." instance=ExtResource("2_relom")]
-transform = Transform3D(-0.06, 0, 5.24537e-09, 0, 0.06, 0, -5.24537e-09, 0, -0.06, 0, 0.513775, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_v5mps")
+
+[node name="Fishing Boat2" parent="." instance=ExtResource("2_h3qv0")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
