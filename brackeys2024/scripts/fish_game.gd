@@ -19,9 +19,13 @@ func _start_minigame() -> void:
 func catch_fish(fish) -> void:
 	if Input.is_key_pressed(KEY_SPACE) && is_in_zone == true:
 		print("Space_Pressed")
+		fish_point_calculator(fish, capture_area)
 		fish.queue_free()
 	else:
 		pass
+
+func fish_point_calculator(fish, capture_area) -> void:
+	print("FISH CAUGHT AT: " + str(abs(fish.position.x+$FishSpawner.position.x)))
 
 func _on_capture_area_area_entered(area: Area2D) -> void:
 	print("FISH!!!!")
