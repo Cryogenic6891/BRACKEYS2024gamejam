@@ -19,7 +19,6 @@ var is_submerged: bool = false
 
 func _physics_process(_delta):
 	var depth = water.update_wave_heights([global_position])[0] - global_position.y
-	print(depth)
 	is_submerged = false
 	if depth > 0:
 		is_submerged = true

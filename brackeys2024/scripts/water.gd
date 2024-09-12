@@ -16,6 +16,11 @@ func _ready():
 	wave_size = material.get_shader_parameter("wave_size")
 	wave_height = material.get_shader_parameter("height")
 
+func global_to_uv(pos: Vector3) -> Vector2:
+	var uv_x = pos.x / global_transform.basis.x.length()
+	var uv_y = pos.z / global_transform.basis.z.length()
+	return Vector2(uv_x, uv_y)
+
 func calculate_wave_height(uv: Vector2, current_time: float) -> float:
 	uv *= wave_size
 	var d1 = fmod(uv.x + uv.y, M_2PI)
@@ -25,17 +30,16 @@ func calculate_wave_height(uv: Vector2, current_time: float) -> float:
 	d2 = current_time * 0.05 + d2
 	
 	var dist = Vector2 (sin(d1) * 0.15 + sin(d2) * 0.05, cos(d1) * 0.15 + cos(d2) * 0.05)
-	var height = dist.y
-	return height
+	return dist.y * wave_height
 
 func update_wave_heights(global_positions: Array) -> Array:
-	var wave_heights = []
+	var wave_heights: Array = []
 	for pos in global_positions:
-		var uv = Vector2(pos.x, pos.z)
+		var uv = global_to_uv(pos)
 		var height = calculate_wave_height(uv, time)
 		wave_heights.append(height)
 	return wave_heights
 
-func _process(delta):
+func _process(delta: float):
+	time += delta * wave_speed
 	material.set_shader_parameter("time", time)
-	
