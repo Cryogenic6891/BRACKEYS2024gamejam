@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://brb8t3f02kodw"]
 
-[ext_resource type="PackedScene" uid="uid://b76c418knjxm2" path="res://scenes/ship.tscn" id="2_1rwce"]
-[ext_resource type="PackedScene" uid="uid://8jln4u20f5mh" path="res://scenes/water.tscn" id="2_4hn3y"]
-[ext_resource type="Script" path="res://scripts/top_camera.gd" id="2_wi2wd"]
+[ext_resource type="PackedScene" uid="uid://6gbsieuh65ij" path="res://scenes/ship.tscn" id="1_fp2v6"]
+[ext_resource type="PackedScene" uid="uid://dadyao6gac3dr" path="res://scenes/water.tscn" id="2_4hn3y"]
+[ext_resource type="Script" path="res://scripts/water.gd" id="3_coner"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3r0lv"]
 sky_top_color = Color(0.613113, 0.677007, 0.766052, 1)
@@ -29,16 +29,17 @@ fog_density = 1.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5kcj7")
 
+[node name="Ship" parent="WorldEnvironment" instance=ExtResource("1_fp2v6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.175718, 0)
+
 [node name="TopCamera" type="Camera3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 22.0064, 49.5378)
+transform = Transform3D(1, 0, 0, 0, 0.73354, 0.679646, 0, -0.679646, 0.73354, 0, 3.34409, 5.25544)
 current = true
-script = ExtResource("2_wi2wd")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-light_color = Color(1, 1, 0.560784, 1)
-light_angular_distance = 3.27
-
-[node name="Ship" parent="WorldEnvironment" node_paths=PackedStringArray("water") instance=ExtResource("2_1rwce")]
-water = NodePath("../../Water")
 
 [node name="Water" parent="." instance=ExtResource("2_4hn3y")]
+script = ExtResource("3_coner")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+light_color = Color(1, 1, 0.560784, 1)
+light_angular_distance = 3.27
+shadow_enabled = true

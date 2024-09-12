@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bx1y6ysahsja1"
-path="res://.godot/imported/Map Tiles.fbx-124a96308ad6eb143823686918c875b5.scn"
+uid="uid://sknqrp17n5fg"
+path="res://.godot/imported/Rocks.fbx-57e11436984ff1828c110558f28e39f7.scn"
 
 [deps]
 
-source_file="res://assets/Map Tiles.fbx"
-dest_files=["res://.godot/imported/Map Tiles.fbx-124a96308ad6eb143823686918c875b5.scn"]
+source_file="res://assets/Rocks.fbx"
+dest_files=["res://.godot/imported/Rocks.fbx-57e11436984ff1828c110558f28e39f7.scn"]
 
 [params]
 
