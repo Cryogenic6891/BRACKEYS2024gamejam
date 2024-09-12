@@ -4,19 +4,22 @@ extends RigidBody3D
 
 # Movement
 var move_speed: float = 3.0  # Speed of forward/backward movement
-var rotation_speed: float = 100  # Speed of rotation (turning)
-var acceleration_forward: float = 5000  # Acceleration forward
-var acceleration_backward: float = 500 # Acceleration backward
+var rotation_speed: float = 0.5  # Speed of rotation (turning)
+var acceleration_forward: float = 1200  # Acceleration forward
+var acceleration_backward: float = 600 # Acceleration backward
 
 # Buoyancy
-var float_force: float = 8
+var float_force: float = 1.4
 var water_drag: float = 0.028
 var water_angular_drag: float = 0.05
 const water_height: float = 0.0
 var is_submerged: bool = false
+@export var water: MeshInstance3D
+
 
 func _physics_process(_delta):
-	var depth = water_height - global_position.y
+	var depth = water.update_wave_heights([global_position])[0] - global_position.y
+	print(depth)
 	is_submerged = false
 	if depth > 0:
 		is_submerged = true
