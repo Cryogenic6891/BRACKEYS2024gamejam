@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba3fwfi84jspd"]
+
+[ext_resource type="Script" path="res://scripts/tidal_wave.gd" id="1_p3x3d"]
+[ext_resource type="PackedScene" uid="uid://civuscdb1u23r" path="res://scenes/tidal_wave.tscn" id="2_80xql"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2ilq1"]
+radius = 20.0
+height = 100.0
+
+[node name="TidalMoving" type="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.01, -10, 0)
+script = ExtResource("1_p3x3d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -10.3222, -11.9424, 0)
+shape = SubResource("CapsuleShape3D_2ilq1")
+
+[node name="TidalWave" parent="." instance=ExtResource("2_80xql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, -1, 0)

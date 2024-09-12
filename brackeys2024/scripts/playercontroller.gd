@@ -4,12 +4,12 @@ extends RigidBody3D
 
 # Movement
 var move_speed: float = 3.0  # Speed of forward/backward movement
-var rotation_speed: float = 0.5  # Speed of rotation (turning)
-var acceleration_forward: float = 1200  # Acceleration forward
-var acceleration_backward: float = 600 # Acceleration backward
+var rotation_speed: float = 1000  # Speed of rotation (turning)
+var acceleration_forward: float = 26000  # Acceleration forward
+var acceleration_backward: float = 8000 # Acceleration backward
 
 # Buoyancy
-var float_force: float = 1.4
+var float_force: float = 40
 var water_drag: float = 0.028
 var water_angular_drag: float = 0.05
 const water_height: float = 0.0

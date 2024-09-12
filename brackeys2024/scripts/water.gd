@@ -1,10 +1,9 @@
 extends MeshInstance3D
 
+# Shader variables
 var material: ShaderMaterial
-
 const M_2PI = 6.283185307
 const M_6PI = 18.84955592
-
 var wave_speed: float
 var wave_size: Vector2
 var wave_height: float
