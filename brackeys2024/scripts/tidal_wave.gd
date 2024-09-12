@@ -2,9 +2,14 @@ extends AnimatableBody3D
 
 var tidal_speed: float = 20
 @export var tidal_direction: Vector3 = Vector3.RIGHT
-var force_multiplier: float = 10.0
-var upward_force: float = 500.0
-var tumble_torque: Vector3 = Vector3(0, 500, 500)
+var force_multiplier: float = 50.0
+var upward_force: float = 1500.0
+var tumble_torque: Vector3 = Vector3(0, 1500, 1500)
+
+@onready var tidal_wave = $TidalWave
+
+func _ready():
+	tidal_wave.mesh.material.set_shader_parameter("tidal_direction", tidal_direction)
 
 func _physics_process(delta):
 	var collision = move_and_collide(tidal_direction * tidal_speed * delta)

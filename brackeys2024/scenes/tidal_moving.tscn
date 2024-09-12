@@ -16,4 +16,4 @@ transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114
 shape = SubResource("CapsuleShape3D_2ilq1")
 
 [node name="TidalWave" parent="." instance=ExtResource("2_80xql")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.4126, -4.53933, -0.178314)

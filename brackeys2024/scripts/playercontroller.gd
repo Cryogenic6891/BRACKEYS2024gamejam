@@ -3,13 +3,13 @@ extends RigidBody3D
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 # Movement
-var move_speed: float = 3.0  # Speed of forward/backward movement
+var move_speed: float = 5.0  # Speed of forward/backward movement
 var rotation_speed: float = 2000  # Speed of rotation (turning)
-var acceleration_forward: float = 36000  # Acceleration forward
+var acceleration_forward: float = 75000  # Acceleration forward
 var acceleration_backward: float = 12000 # Acceleration backward
 
 # Buoyancy
-var float_force: float = 14
+var float_force: float = 16
 var water_drag: float = 0.028
 var water_angular_drag: float = 0.05
 const water_height: float = 0.0
@@ -18,15 +18,18 @@ var is_submerged: bool = false
 
 # Stabilization
 var stabilization_force: float = 2000
+var is_capsized: bool = false
+var capsized_timer: float = 0.0
+var capsized_threshold: float = 5.0
 
-
-func _physics_process(_delta):
+func _physics_process(delta):
 	is_submerged = false
 	var depth = water.update_wave_heights(global_position) - global_position.y
 	if depth > 0:
 		is_submerged = true
 		apply_central_force(Vector3.UP * float_force * gravity * depth)
-
+	check_capsized(delta)
+	
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if not is_submerged:
 		return
@@ -63,3 +66,21 @@ func stabilize_upright(delta, state: PhysicsDirectBodyState3D) -> void:
 	var desired_up = Vector3.UP
 	var stabilization_torque = current_up.cross(desired_up)
 	state.apply_torque_impulse(stabilization_torque * stabilization_force * delta)
+
+func check_capsized(delta: float):
+	var up_vector = transform.basis.y
+	is_capsized = up_vector.y < -0.2
+	if is_capsized:
+		capsized_timer += delta
+		if capsized_timer >= capsized_threshold and Input.is_action_just_pressed("ui_accept"):
+			reset_boat_orientation()
+	else:
+		capsized_timer = 0.0
+
+func reset_boat_orientation():
+	var transform_new = global_transform
+	transform_new.basis = Basis()
+	global_transform = transform_new
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	capsized_timer = 0.0

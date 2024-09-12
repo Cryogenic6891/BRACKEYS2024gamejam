@@ -47,13 +47,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.5095, -0.0694618, -0.1783
 mesh = SubResource("PlaneMesh_wjk4y")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.475, 32.333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4317, 34.6769, 0)
 amount = 1000
 process_material = SubResource("ParticleProcessMaterial_0ahey")
 draw_pass_1 = SubResource("SphereMesh_pcmf7")
 
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.647, -4.64184, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.647, -0.445723, 0)
 amount = 1000
 process_material = SubResource("ParticleProcessMaterial_0ahey")
 draw_pass_1 = SubResource("SphereMesh_pcmf7")

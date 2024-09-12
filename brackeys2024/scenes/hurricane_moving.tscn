@@ -1,0 +1,179 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfu05c0nqrmf0"]
+
+[ext_resource type="PackedScene" uid="uid://dx2vfjmory2ks" path="res://scenes/hurricane.tscn" id="1_npwxm"]
+[ext_resource type="Script" path="res://scripts/tidal_wave.gd" id="2_v3t0b"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pch4g"]
+radius = 10.0
+height = 100.0
+
+[sub_resource type="Animation" id="Animation_2ypt2"]
+resource_name = "twisting"
+length = 5.328
+loop_mode = 1
+step = 0.333
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TidalWave:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(13, -0.25, 0, 0.333333, -30, 13, -0.332667, -25, 0.334, -25, 0, -0.332, -11, 0.334667, 20, -13, -0.331333, 26, 0.335333, -14, -13, -0.330667, -17, 0.336, 19, -13, -0.33, 20, 0.336667, -13, 0, -0.329333, -25, 0.337333, 37, 13, -0.328667, 23, 0.338, -15, 13, -0.328, -14, 0.00533342, 1),
+"times": PackedFloat32Array(0, 0.676, 1.342, 2.008, 2.674, 3.34, 4.006, 4.662, 5.328)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TidalWave:position:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.333333, 13, 13, -0.332667, 1, 0.334, 12, 13, -0.332, 11, 0.334667, -15, 13, -0.331333, -16, 0.335333, 7, 0, -0.330667, 18, 0.336, -21, -13, -0.33, -9, 0.336667, 14, -13, -0.329333, 13, 0.337333, -8, -13, -0.328667, -11, 0.338, 27, -1, -0.328, 15, 0.00533342, 15),
+"times": PackedFloat32Array(0.00999951, 0.666, 1.332, 1.998, 2.664, 3.33, 3.996, 4.662, 5.33333)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TidalWave2:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(13, -0.25, 0, 0.333333, -30, 13, -0.332667, -25, 0.334, -25, 0, -0.332, -11, 0.334667, 20, -13, -0.331333, 26, 0.335333, -14, -13, -0.330667, -17, 0.336, 19, -13, -0.33, 20, 0.336667, -13, 0, -0.329333, -25, 0.337333, 37, 13, -0.328667, 23, 0.338, -15, 13, -0.328, -14, 0.00533342, 1),
+"times": PackedFloat32Array(0, 0.676, 1.342, 2.008, 2.674, 3.34, 4.006, 4.662, 5.328)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TidalWave2:position:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.333333, 13, 13, -0.332667, 1, 0.334, 12, 13, -0.332, 11, 0.334667, -15, 13, -0.331333, -16, 0.335333, 7, 0, -0.330667, 18, 0.336, -21, -13, -0.33, -9, 0.336667, 14, -13, -0.329333, 13, 0.337333, -8, -13, -0.328667, -11, 0.338, 27, -1, -0.328, 15, 0.00533342, 15),
+"times": PackedFloat32Array(0.00999951, 0.666, 1.332, 1.998, 2.664, 3.33, 3.996, 4.662, 5.33333)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TidalWave3:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(13, -0.25, 0, 0.333333, -30, 13, -0.332667, -25, 0.334, -25, 0, -0.332, -11, 0.334667, 20, -13, -0.331333, 26, 0.335333, -14, -13, -0.330667, -17, 0.336, 19, -13, -0.33, 20, 0.336667, -13, 0, -0.329333, -25, 0.337333, 37, 13, -0.328667, 23, 0.338, -15, 13, -0.328, -14, 0.00533342, 1),
+"times": PackedFloat32Array(0, 0.676, 1.342, 2.008, 2.674, 3.34, 4.006, 4.662, 5.328)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TidalWave3:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.333333, 13, 13, -0.332667, 1, 0.334, 12, 13, -0.332, 11, 0.334667, -15, 13, -0.331333, -16, 0.335333, 7, 0, -0.330667, 18, 0.336, -21, -13, -0.33, -9, 0.336667, 14, -13, -0.329333, 13, 0.337333, -8, -13, -0.328667, -11, 0.338, 27, -1, -0.328, 15, 0.00533342, 15),
+"times": PackedFloat32Array(0.00999951, 0.666, 1.332, 1.998, 2.664, 3.33, 3.996, 4.662, 5.33333)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TidalWave4:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(13, -0.25, 0, 0.333333, -30, 13, -0.332667, -25, 0.334, -25, 0, -0.332, -11, 0.334667, 20, -13, -0.331333, 26, 0.335333, -14, -13, -0.330667, -17, 0.336, 19, -13, -0.33, 20, 0.336667, -13, 0, -0.329333, -25, 0.337333, 37, 13, -0.328667, 23, 0.338, -15, 13, -0.328, -14, 0.00533342, 1),
+"times": PackedFloat32Array(0, 0.676, 1.342, 2.008, 2.674, 3.34, 4.006, 4.662, 5.328)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TidalWave4:position:z")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.333333, 13, 13, -0.332667, 1, 0.334, 12, 13, -0.332, 11, 0.334667, -15, 13, -0.331333, -16, 0.335333, 7, 0, -0.330667, 18, 0.336, -21, -13, -0.33, -9, 0.336667, 14, -13, -0.329333, 13, 0.337333, -8, -13, -0.328667, -11, 0.338, 27, -1, -0.328, 15, 0.00533342, 15),
+"times": PackedFloat32Array(0.00999951, 0.666, 1.332, 1.998, 2.664, 3.33, 3.996, 4.662, 5.33333)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CollisionShape3D:position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(13, -0.25, 0, 0.333333, -30, 13, -0.332667, -25, 0.334, -25, 0, -0.332, -11, 0.334667, 20, -13, -0.331333, 26, 0.335333, -14, -13, -0.330667, -17, 0.336, 19, -13, -0.33, 20, 0.336667, -13, 0, -0.329333, -25, 0.337333, 37, 13, -0.328667, 23, 0.338, -15, 13, -0.328, -14, 0.00533342, 1),
+"times": PackedFloat32Array(0, 0.676, 1.342, 2.008, 2.674, 3.34, 4.006, 4.662, 5.328)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CollisionShape3D:position:z")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.333333, 13, 13, -0.332667, 1, 0.334, 12, 13, -0.332, 11, 0.334667, -15, 13, -0.331333, -16, 0.335333, 7, 0, -0.330667, 18, 0.336, -21, -13, -0.33, -9, 0.336667, 14, -13, -0.329333, 13, 0.337333, -8, -13, -0.328667, -11, 0.338, 27, -1, -0.328, 15, 0.00533342, 15),
+"times": PackedFloat32Array(0.00999951, 0.666, 1.332, 1.998, 2.664, 3.33, 3.996, 4.662, 5.33333)
+}
+
+[sub_resource type="Animation" id="Animation_6lpmt"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TidalWave:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(13, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TidalWave:position:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kl880"]
+_data = {
+"RESET": SubResource("Animation_6lpmt"),
+"twisting": SubResource("Animation_2ypt2")
+}
+
+[node name="hurricane_moving" type="AnimatableBody3D"]
+script = ExtResource("2_v3t0b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_pch4g")
+
+[node name="TidalWave" parent="." instance=ExtResource("1_npwxm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 65, 0)
+
+[node name="TidalWave2" parent="." instance=ExtResource("1_npwxm")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 13, 52.5987, 0)
+
+[node name="TidalWave3" parent="." instance=ExtResource("1_npwxm")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 13, 36.724, 0)
+
+[node name="TidalWave4" parent="." instance=ExtResource("1_npwxm")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 13, 23.2316, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kl880")
+}
+autoplay = "twisting"
