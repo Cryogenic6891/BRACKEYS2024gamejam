@@ -4,28 +4,33 @@ extends RigidBody3D
 
 # Movement
 var move_speed: float = 3.0  # Speed of forward/backward movement
-var rotation_speed: float = 1000  # Speed of rotation (turning)
-var acceleration_forward: float = 26000  # Acceleration forward
-var acceleration_backward: float = 8000 # Acceleration backward
+var rotation_speed: float = 2000  # Speed of rotation (turning)
+var acceleration_forward: float = 36000  # Acceleration forward
+var acceleration_backward: float = 12000 # Acceleration backward
 
 # Buoyancy
-var float_force: float = 40
+var float_force: float = 14
 var water_drag: float = 0.028
 var water_angular_drag: float = 0.05
 const water_height: float = 0.0
 var is_submerged: bool = false
 @export var water: MeshInstance3D
 
+# Stabilization
+var stabilization_force: float = 2000
+
 
 func _physics_process(_delta):
-	var depth = water.update_wave_heights([global_position])[0] - global_position.y
 	is_submerged = false
+	var depth = water.update_wave_heights(global_position) - global_position.y
 	if depth > 0:
 		is_submerged = true
 		apply_central_force(Vector3.UP * float_force * gravity * depth)
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
-	# get delta-time
+	if not is_submerged:
+		return
+	
 	var delta = get_physics_process_delta_time()
 	
 	# player input
@@ -51,3 +56,10 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if is_submerged: #smoothed upwards buoyancy
 		state.linear_velocity *= 1 - water_drag
 		state.angular_velocity *= 1 - water_angular_drag
+	stabilize_upright(delta, state)
+
+func stabilize_upright(delta, state: PhysicsDirectBodyState3D) -> void:
+	var current_up = transform.basis.y
+	var desired_up = Vector3.UP
+	var stabilization_torque = current_up.cross(desired_up)
+	state.apply_torque_impulse(stabilization_torque * stabilization_force * delta)
