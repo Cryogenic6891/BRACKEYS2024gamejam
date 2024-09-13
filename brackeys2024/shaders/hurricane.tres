@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bb6tkaue3fcgy"]
+
+[ext_resource type="Shader" path="res://shaders/tidal.gdshader" id="1_exsd3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_exsd3")
+shader_parameter/tidal_speed = 300.0
+shader_parameter/tidal_height = 5.0
+shader_parameter/tidal_length = 200.0
+shader_parameter/tidal_steepness = 0.8
+shader_parameter/tidal_direction = Vector3(-1, 1, 1)
+shader_parameter/crest_falloff = 2.0
+shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
+shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 20.0
+shader_parameter/tile = Vector2(2, 100)
+shader_parameter/height = 2.0
+shader_parameter/wave_size = Vector2(2, 2)
+shader_parameter/wave_speed = 1.5
+shader_parameter/wave_time = 0.0
+shader_parameter/time = null

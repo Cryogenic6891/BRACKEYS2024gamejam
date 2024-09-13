@@ -284,7 +284,7 @@ transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 28.5, 
 water = NodePath("../Water")
 
 [node name="Water" parent="." instance=ExtResource("3_8cxwg")]
-transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, -172.5, 0, 163)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -172.5, 0, 163)
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("3_c3i77")

@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://civuscdb1u23r"]
+
+[ext_resource type="Shader" path="res://shaders/tidal.gdshader" id="1_bpe65"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_52jn1"]
+render_priority = 0
+shader = ExtResource("1_bpe65")
+shader_parameter/tidal_speed = 0.0
+shader_parameter/tidal_height = 100.0
+shader_parameter/tidal_length = 100.0
+shader_parameter/tidal_steepness = 0.8
+shader_parameter/tidal_direction = Vector3(1, 0, 0)
+shader_parameter/crest_falloff = 3.0
+shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
+shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 20.0
+shader_parameter/tile = Vector2(2, 100)
+shader_parameter/height = 60.0
+shader_parameter/wave_size = Vector2(2, 2)
+shader_parameter/wave_speed = 6.0
+shader_parameter/wave_time = 0.0
+shader_parameter/time = null
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wjk4y"]
+material = SubResource("ShaderMaterial_52jn1")
+size = Vector2(100, 100)
+subdivide_width = 100
+subdivide_depth = 100
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0ahey"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 50)
+inherit_velocity_ratio = 1.0
+direction = Vector3(1, 0.6, 0)
+spread = 24.646
+initial_velocity_max = 25.38
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4rc5s"]
+albedo_color = Color(0.812, 0.961, 0.965, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_pcmf7"]
+material = SubResource("StandardMaterial3D_4rc5s")
+
+[node name="TidalWave" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.5095, -0.0694618, -0.178314)
+mesh = SubResource("PlaneMesh_wjk4y")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4317, 34.6769, 0)
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_0ahey")
+draw_pass_1 = SubResource("SphereMesh_pcmf7")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.647, -0.445723, 0)
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_0ahey")
+draw_pass_1 = SubResource("SphereMesh_pcmf7")

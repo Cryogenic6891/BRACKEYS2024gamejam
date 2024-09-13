@@ -1,10 +1,9 @@
 extends MeshInstance3D
 
+# Shader variables
 var material: ShaderMaterial
-
 const M_2PI = 6.283185307
 const M_6PI = 18.84955592
-
 var wave_speed: float
 var wave_size: Vector2
 var wave_height: float
@@ -32,13 +31,11 @@ func calculate_wave_height(uv: Vector2, current_time: float) -> float:
 	var dist = Vector2 (sin(d1) * 0.15 + sin(d2) * 0.05, cos(d1) * 0.15 + cos(d2) * 0.05)
 	return dist.y * wave_height
 
-func update_wave_heights(global_positions: Array) -> Array:
-	var wave_heights: Array = []
-	for pos in global_positions:
-		var uv = global_to_uv(pos)
-		var height = calculate_wave_height(uv, time)
-		wave_heights.append(height)
-	return wave_heights
+func update_wave_heights(global_positions):
+	var wave_heights
+	var uv = global_to_uv(global_positions)
+	var height = calculate_wave_height(uv, time)
+	return height
 
 func _process(delta: float):
 	time += delta * wave_speed
