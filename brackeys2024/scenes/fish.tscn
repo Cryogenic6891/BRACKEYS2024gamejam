@@ -16,3 +16,5 @@ scale = Vector2(0.25, 0.25)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_01lcp")
+
+[node name="FishValue" type="Node" parent="."]
