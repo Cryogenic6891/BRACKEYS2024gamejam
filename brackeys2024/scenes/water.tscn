@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://8jln4u20f5mh"]
+[gd_scene load_steps=5 format=3 uid="uid://dadyao6gac3dr"]
 
 [ext_resource type="Shader" path="res://shaders/wave.gdshader" id="1_rs7ub"]
 [ext_resource type="Script" path="res://scripts/water.gd" id="2_m1gb8"]

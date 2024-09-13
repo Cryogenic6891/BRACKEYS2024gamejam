@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://db04nqbxmyxv0"]
+
+[ext_resource type="Texture2D" uid="uid://cutq4aarlsrq3" path="res://assets/textures/Flowers Yellow.png" id="1_3p08g"]
+[ext_resource type="Texture2D" uid="uid://drmkx2qgys5je" path="res://assets/textures/Flowers Blue.png" id="2_eajfx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_olsm8"]
+transparency = 1
+albedo_texture = ExtResource("1_3p08g")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6fynf"]
+material = SubResource("StandardMaterial3D_olsm8")
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddfn7"]
+transparency = 1
+albedo_texture = ExtResource("2_eajfx")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_c6twj"]
+material = SubResource("StandardMaterial3D_ddfn7")
+size = Vector2(10, 10)
+
+[node name="Flowers" type="Node3D"]
+
+[node name="Yellows" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_6fynf")
+
+[node name="Blues" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_c6twj")

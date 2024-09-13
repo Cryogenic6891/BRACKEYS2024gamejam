@@ -41,6 +41,8 @@ light_color = Color(1, 1, 0.560784, 1)
 light_angular_distance = 3.27
 
 [node name="Ship" parent="WorldEnvironment" node_paths=PackedStringArray("water") instance=ExtResource("2_1rwce")]
+mass = 1.0
+physics_material_override = null
 water = NodePath("../../Water")
 
 [node name="Water" parent="." instance=ExtResource("2_4hn3y")]
