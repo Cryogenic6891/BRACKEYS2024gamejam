@@ -8,7 +8,26 @@ radius = 19.0
 height = 92.0
 
 [node name="FishGame" type="Node2D"]
+position = Vector2(-3, -3)
 script = ExtResource("1_rr6hl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 11.0
+offset_top = 19.0
+offset_right = 317.0
+offset_bottom = 42.0
+text = "SCORE: "
+metadata/_edit_use_anchors_ = true
+
+[node name="FishCountLabel" type="Label" parent="CanvasLayer"]
+offset_left = 11.0
+offset_top = 42.0
+offset_right = 317.0
+offset_bottom = 65.0
+text = "FISH COUNT: "
+metadata/_edit_use_anchors_ = true
 
 [node name="CaptureArea" type="Area2D" parent="."]
 collision_layer = 2
@@ -21,6 +40,7 @@ rotation = -1.5708
 shape = SubResource("CapsuleShape2D_01lcp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(5, 2)
 
 [node name="FishSpawner" parent="." instance=ExtResource("3_4mnn3")]
 
