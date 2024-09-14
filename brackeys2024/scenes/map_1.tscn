@@ -2040,7 +2040,6 @@ transform = Transform3D(95.6384, -58.2863, -2.54777e-06, 0, -4.89568e-06, 112, -
 mesh = SubResource("ArrayMesh_fgis2")
 skeleton = NodePath("")
 
-
 [node name="FishSpawns" type="Node3D" parent="."]
 
 [node name="FishArea" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
@@ -2084,6 +2083,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -53.5849, 229.027)
 [node name="Marker3D2" type="Marker3D" parent="HurricaneSpawners"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -426.768, -53.5849, -82.9234)
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1276.0
+offset_bottom = 796.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control"]
+layout_mode = 0
+offset_right = 1284.0
+offset_bottom = 802.0
+
+[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
+unique_name_in_owner = true
 
 [editable path="Harbour"]
 [editable path="Foliage/Flowers"]
