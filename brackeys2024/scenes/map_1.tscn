@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cutq4aarlsrq3" path="res://assets/textures/Flowers Yellow.png" id="10_8fme7"]
 [ext_resource type="Texture2D" uid="uid://drmkx2qgys5je" path="res://assets/textures/Flowers Blue.png" id="11_0scix"]
 [ext_resource type="PackedScene" uid="uid://ctw2bqhu48ksm" path="res://assets/Shrubs.fbx" id="12_cdt2d"]
-[ext_resource type="PackedScene" path="res://scenes/fish_area.tscn" id="13_yc2fi"]
+[ext_resource type="PackedScene" uid="uid://ob2odsgwsktd" path="res://scenes/fish_area.tscn" id="13_yc2fi"]
 [ext_resource type="Script" path="res://scenes/game_manager.gd" id="14_2yr2j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1fyuw"]
@@ -295,13 +295,13 @@ shadow_mesh = SubResource("ArrayMesh_8y36n")
 
 [node name="Map 1" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." groups=["skylight"]]
 transform = Transform3D(-0.328744, 0.2982, 0.896105, 0.801202, 0.590405, 0.0974568, -0.500003, 0.749999, -0.43301, 0, 289.685, 0)
 light_color = Color(1, 0.637333, 0.36, 1)
 light_energy = 0.5
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." groups=["environment"]]
 environment = SubResource("Environment_ns4ja")
 
 [node name="TopCamera" type="Camera3D" parent="." node_paths=PackedStringArray("player_node")]
@@ -2056,7 +2056,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.0187, 0, 46.0869)
 [node name="Game Manager" type="Node" parent="."]
 script = ExtResource("14_2yr2j")
 
-[node name="TideSpawners" type="Node" parent="."]
+[node name="TideSpawners" type="Node" parent="." groups=["tidespawn"]]
 
 [node name="RIGHT" type="Marker3D" parent="TideSpawners"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -514.636, 0, -20.4784)
@@ -2067,13 +2067,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -516.288, 0, 170.044)
 [node name="LEFT" type="Marker3D" parent="TideSpawners"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 162.24, 0, 258.884)
 
-[node name="UP" type="Marker3D" parent="TideSpawners"]
+[node name="FORWARD" type="Marker3D" parent="TideSpawners"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -211.063, 0, 335.679)
 
-[node name="DOWN" type="Marker3D" parent="TideSpawners"]
+[node name="BACK" type="Marker3D" parent="TideSpawners"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -470.21, 0, -117.814)
 
-[node name="HurricaneSpawners" type="Node" parent="."]
+[node name="HurricaneSpawners" type="Node" parent="." groups=["hurricanespawn"]]
 
 [node name="Marker3D" type="Marker3D" parent="HurricaneSpawners"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -53.5849, 229.027)
@@ -2083,15 +2083,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -426.768, -53.5849, -82.9234)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1276.0
-offset_bottom = 796.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Control"]
 visible = false
-layout_mode = 0
-offset_right = 1284.0
-offset_bottom = 802.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
 unique_name_in_owner = true

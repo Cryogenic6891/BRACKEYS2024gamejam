@@ -11,24 +11,31 @@ var timer_started: bool = false
 var paused_start
 var paused_resumed
 var pause_adjustment = 0
+var stored_sec = 0
+var current_sec = 0
 
 signal phase_changed(phase)
+signal new_second
 
 func start_timer():
-	var pause_adjustment = 0
-	start_stage_time = Time.get_ticks_msec()/1000
+	pause_adjustment = 0
+	start_stage_time = float(Time.get_ticks_msec())/1000
 	for phase in phase_amount:
 		var phase_switch = end_stage_time*(phase/phase_amount)
 		phases.append([phase+1,phase_switch])
 	current_phase = phases.pop_front()
 	timer_started = true
 
-func _process(delta):
+func _process(_delta):
 	if timer_started:
-		stage_time_sec = Time.get_ticks_msec()/1000 - start_stage_time - pause_adjustment
+		stage_time_sec = float(Time.get_ticks_msec())/1000 - start_stage_time - pause_adjustment
+		current_sec = floori(stage_time_sec)
+		if current_sec != stored_sec:
+			new_second.emit()
+			stored_sec = current_sec
 		if stage_time_sec >= 60:
 			stage_time_min += 1
-			start_stage_time = Time.get_ticks_msec()/1000
+			start_stage_time = float(Time.get_ticks_msec())/1000
 			stage_time_sec = 0.0
 		var fraction_of_minute = stage_time_sec/60
 		if not phases.is_empty():
@@ -37,21 +44,23 @@ func _process(delta):
 				phase_changed.emit(current_phase)
 
 func get_timer() -> String:
-	var min : String
+	var minute : String
 	var sec : String
 	if stage_time_min < 10:
-		min = "0" + str(stage_time_min)
+		minute = "0" + str(stage_time_min)
 	else:
-		min = str(stage_time_min)
+		minute = str(stage_time_min)
 	if stage_time_sec < 10:
-		sec = "0" + str(stage_time_sec)
+		var to_int = floori(stage_time_sec)
+		sec = "0" + str(to_int)
 	else:
-		sec = str(stage_time_sec)
-	return min+":"+sec
+		var to_int = floori(stage_time_sec)
+		sec = str(to_int)
+	return minute+":"+sec
 
 func pause_timer(paused:bool):
 	if paused:
-		paused_start = Time.get_ticks_msec()/1000
+		paused_start = float(Time.get_ticks_msec())/1000
 	else:
-		paused_resumed = Time.get_ticks_msec()/1000
+		paused_resumed = float(Time.get_ticks_msec())/1000
 		pause_adjustment = paused_resumed - paused_start

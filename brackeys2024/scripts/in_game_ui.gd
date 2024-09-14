@@ -7,7 +7,7 @@ var time
 @onready var tip_box = $TipBox
 @onready var tip_message = $TipBox/VBoxContainer/message
 
-func _process(delta):
+func _process(_delta):
 	if LevelManager.game_running:
 		time_text.text = StageTimer.get_timer()
 
