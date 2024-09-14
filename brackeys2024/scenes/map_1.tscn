@@ -1,6 +1,6 @@
 [gd_scene load_steps=40 format=4 uid="uid://cfw585he2plsg"]
 
-[ext_resource type="PackedScene" uid="uid://b76c418knjxm2" path="res://scenes/ship.tscn" id="1_7ejx5"]
+[ext_resource type="PackedScene" uid="uid://6gbsieuh65ij" path="res://scenes/ship.tscn" id="1_7ejx5"]
 [ext_resource type="Script" path="res://scripts/top_camera.gd" id="1_c8ffa"]
 [ext_resource type="PackedScene" uid="uid://dadyao6gac3dr" path="res://scenes/water.tscn" id="3_8cxwg"]
 [ext_resource type="MeshLibrary" uid="uid://cvryiq1j563u4" path="res://mesh library/Map Tiles.tres" id="3_c3i77"]
@@ -312,7 +312,7 @@ script = ExtResource("1_c8ffa")
 player_node = NodePath("../Ship")
 
 [node name="Ship" parent="." node_paths=PackedStringArray("water") instance=ExtResource("1_7ejx5")]
-transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 28.5, 0, 21)
+transform = Transform3D(-0.997244, 0, 0.0741955, 0, 1, 0, -0.0741955, 0, -0.997244, 26.8919, 0, 23.3324)
 water = NodePath("../Water")
 
 [node name="Water" parent="." instance=ExtResource("3_8cxwg")]
@@ -2040,6 +2040,7 @@ transform = Transform3D(95.6384, -58.2863, -2.54777e-06, 0, -4.89568e-06, 112, -
 mesh = SubResource("ArrayMesh_fgis2")
 skeleton = NodePath("")
 
+
 [node name="FishSpawns" type="Node3D" parent="."]
 
 [node name="FishArea" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
@@ -2057,6 +2058,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.0187, 0, 46.0869)
 [node name="Game Manager" type="Node" parent="."]
 script = ExtResource("14_2yr2j")
 fish_school = ExtResource("15_uwxp5")
+
+[node name="TideSpawners" type="Node" parent="."]
+
+[node name="RIGHT" type="Marker3D" parent="TideSpawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -514.636, 0, -20.4784)
+
+[node name="RIGHT2" type="Marker3D" parent="TideSpawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -516.288, 0, 170.044)
+
+[node name="LEFT" type="Marker3D" parent="TideSpawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 162.24, 0, 258.884)
+
+[node name="UP" type="Marker3D" parent="TideSpawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -211.063, 0, 335.679)
+
+[node name="DOWN" type="Marker3D" parent="TideSpawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -470.21, 0, -117.814)
+
+[node name="HurricaneSpawners" type="Node" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="HurricaneSpawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -53.5849, 229.027)
+
+[node name="Marker3D2" type="Marker3D" parent="HurricaneSpawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -426.768, -53.5849, -82.9234)
+
 
 [editable path="Harbour"]
 [editable path="Foliage/Flowers"]

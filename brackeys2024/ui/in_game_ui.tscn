@@ -66,38 +66,50 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 32
 text = "/20"
 
-[node name="Score" type="HBoxContainer" parent="MarginContainer/UIBox"]
+[node name="ScoreBox" type="HBoxContainer" parent="MarginContainer/UIBox"]
 layout_direction = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="ScoreLabel" type="Label" parent="MarginContainer/UIBox/Score"]
+[node name="ScoreLabel" type="Label" parent="MarginContainer/UIBox/ScoreBox"]
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 32
 text = "Score:"
 
-[node name="ScoreCounter" type="Label" parent="MarginContainer/UIBox/Score"]
+[node name="ScoreCounter" type="Label" parent="MarginContainer/UIBox/ScoreBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="GoalBox" type="HBoxContainer" parent="MarginContainer/UIBox"]
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="GoalLabel" type="Label" parent="MarginContainer/UIBox/GoalBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "Goal:"
+
+[node name="GoalCounter" type="Label" parent="MarginContainer/UIBox/GoalBox"]
 layout_mode = 2
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 32
 text = "0"
 
 [node name="TipBox" type="Panel" parent="."]
-visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -310.0
-offset_top = -71.0
-offset_right = 310.0
-offset_bottom = 71.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -342.0
+offset_right = 721.0
+grow_vertical = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TipBox"]
 layout_mode = 1
@@ -113,13 +125,3 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Find the fish shadows to catch them!"
 horizontal_alignment = 1
-
-[node name="CloseButton" type="Button" parent="TipBox"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -76.0
-offset_bottom = 31.0
-grow_horizontal = 0
-text = "Close"
