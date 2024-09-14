@@ -1241,6 +1241,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.8933, 29.8439, -39.888)
 [node name="Yellows" parent="Foliage/Flowers" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.785854, 0, -2.8245)
 
+[node name="Blues" parent="Foliage/Flowers" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0965, 0, -46.9027)
+
 [node name="Yellows2" type="MeshInstance3D" parent="Foliage/Flowers"]
 transform = Transform3D(0.676208, 0, -0.736711, 0, 1, 0, 0.736711, 0, 0.676208, 20.064, 0, -40.2749)
 mesh = SubResource("PlaneMesh_6fynf")
@@ -1525,9 +1528,6 @@ mesh = SubResource("PlaneMesh_6fynf")
 transform = Transform3D(0.583158, 0, -0.812358, 0, 1, 0, 0.812358, 0, 0.583158, -92.952, 0, -18.3695)
 mesh = SubResource("PlaneMesh_6fynf")
 
-[node name="Blues" parent="Foliage/Flowers" index="72"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0965, 0, -46.9027)
-
 [node name="Blues2" type="MeshInstance3D" parent="Foliage/Flowers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.3443, 0, 224.156)
 mesh = SubResource("PlaneMesh_c6twj")
@@ -1565,6 +1565,9 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -116.495, 32, 298.051)
 
 [node name="Shrub 1" parent="Foliage/Shrubs" index="0"]
 transform = Transform3D(58.6458, -74.7373, -3.26687e-06, 0, -4.15258e-06, 95, -74.7373, -58.6458, -2.56349e-06, 5.18474, 0, -19.689)
+
+[node name="Shrub 2" parent="Foliage/Shrubs" index="1"]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 26.2062, 0, -24.4945)
 
 [node name="Shrub 50" type="MeshInstance3D" parent="Foliage/Shrubs"]
 transform = Transform3D(69.1403, -88.1114, -3.85147e-06, 0, -4.89568e-06, 112, -88.1114, -69.1403, -3.02222e-06, 49.3282, 3.33786e-06, -28.138)
@@ -1755,9 +1758,6 @@ skeleton = NodePath("")
 transform = Transform3D(-94.8508, -31.6759, -3.77606e-06, -5.06032e-14, -1.19209e-05, 100, -31.6758, 94.8507, 1.13071e-05, -66.5221, 1.00136e-05, -44.8671)
 mesh = SubResource("ArrayMesh_fqc7d")
 skeleton = NodePath("")
-
-[node name="Shrub 2" parent="Foliage/Shrubs" index="39"]
-transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 26.2062, 0, -24.4945)
 
 [node name="Shrub 88" type="MeshInstance3D" parent="Foliage/Shrubs"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, -8.02131, 0, -37.7194)
