@@ -25,7 +25,6 @@ func _process(_delta: float) -> void:
 			game_view.visible = true
 			subview_port.add_child(new_fish_game)
 			queue_free()
-	
 			# these lines will be changed $Control/SubViewportContainer/SubViewportfor our game. It should call Raz' minigame
 			#if player.objective_manager.meat_on_back.size() < 3: 
 				#player.objective_manager.add_meat()

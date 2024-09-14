@@ -295,13 +295,13 @@ shadow_mesh = SubResource("ArrayMesh_8y36n")
 
 [node name="Map 1" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." groups=["skylight"]]
 transform = Transform3D(-0.328744, 0.2982, 0.896105, 0.801202, 0.590405, 0.0974568, -0.500003, 0.749999, -0.43301, 0, 289.685, 0)
 light_color = Color(1, 0.637333, 0.36, 1)
 light_energy = 0.5
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." groups=["environment"]]
 environment = SubResource("Environment_ns4ja")
 
 [node name="TopCamera" type="Camera3D" parent="." node_paths=PackedStringArray("player_node")]
