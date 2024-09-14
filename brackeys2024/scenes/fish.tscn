@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_01lcp"]
 radius = 19.0
-height = 92.0
+height = 74.0
 
 [node name="Fish" type="Area2D"]
 collision_mask = 2

@@ -11,20 +11,22 @@ var fish_dictionary = {
 	"large":{"fish_points":100,"fish_image":HAMMERHEAD_SHARK}
 	}
 
-var fish_sprite
+var fish_spawn_total
 
 func _ready() -> void:
-	pass
+	fish_spawn_total = randi_range(3, 7)
 
 #spawns a fish on timer timeout
 func _on_fish_spawn_timer_timeout() -> void:
-	var new_fish = fish_node.instantiate()
-	var selected_fish = select_fish_size()
-	new_fish.fish_value = fish_dictionary[selected_fish]["fish_points"]
-	new_fish.get_node("FishSprite").texture = fish_dictionary[selected_fish]["fish_image"]
-	add_child(new_fish)
-
-
+	if fish_spawn_total > 0:
+		var new_fish = fish_node.instantiate()
+		var selected_fish = select_fish_size()
+		new_fish.fish_value = fish_dictionary[selected_fish]["fish_points"]
+		new_fish.get_node("FishSprite").texture = fish_dictionary[selected_fish]["fish_image"]
+		add_child(new_fish)
+		fish_spawn_total -= 1
+	else:
+		pass
 
 func select_fish_size():
 	randomize()
