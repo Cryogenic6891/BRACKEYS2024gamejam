@@ -12,8 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://cutq4aarlsrq3" path="res://assets/textures/Flowers Yellow.png" id="10_8fme7"]
 [ext_resource type="Texture2D" uid="uid://drmkx2qgys5je" path="res://assets/textures/Flowers Blue.png" id="11_0scix"]
 [ext_resource type="PackedScene" uid="uid://ctw2bqhu48ksm" path="res://assets/Shrubs.fbx" id="12_cdt2d"]
-[ext_resource type="PackedScene" uid="uid://ob2odsgwsktd" path="res://scenes/fish_area.tscn" id="13_yc2fi"]
-[ext_resource type="Script" path="res://scenes/game_manager.gd" id="14_2yr2j"]
+[ext_resource type="PackedScene" path="res://scenes/fish_area.tscn" id="13_yc2fi"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="14_2yr2j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1fyuw"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
