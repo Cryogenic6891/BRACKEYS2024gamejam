@@ -39,5 +39,6 @@ func spawn_fish() -> void:
 	# instantiate a meat objective object at chosen point (parent under ObjectiveGoals node)
 	for n in fish_spawns: #For however many spawns points were chosen, spawn meat there
 		var new_fish = fish_school.instantiate() #Instantiate the meat scene
-		
+		new_fish.position = n.position
+		add_child(new_fish)
 		#objective_goals.add_child(new_meat) #Make it a child of the empty Node

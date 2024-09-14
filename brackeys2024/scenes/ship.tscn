@@ -12,7 +12,7 @@ absorbent = true
 radius = 7.0
 height = 25.0
 
-[node name="Ship" type="RigidBody3D"]
+[node name="Ship" type="RigidBody3D" groups=["player"]]
 mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_xn0pu")
 script = ExtResource("1_ep2o1")

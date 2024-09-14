@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://cfw585he2plsg"]
+[gd_scene load_steps=40 format=4 uid="uid://cfw585he2plsg"]
 
 [ext_resource type="PackedScene" uid="uid://b76c418knjxm2" path="res://scenes/ship.tscn" id="1_7ejx5"]
 [ext_resource type="Script" path="res://scripts/top_camera.gd" id="1_c8ffa"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://cutq4aarlsrq3" path="res://assets/textures/Flowers Yellow.png" id="10_8fme7"]
 [ext_resource type="Texture2D" uid="uid://drmkx2qgys5je" path="res://assets/textures/Flowers Blue.png" id="11_0scix"]
 [ext_resource type="PackedScene" uid="uid://ctw2bqhu48ksm" path="res://assets/Shrubs.fbx" id="12_cdt2d"]
+[ext_resource type="PackedScene" uid="uid://ob2odsgwsktd" path="res://scenes/fish_area.tscn" id="13_yc2fi"]
+[ext_resource type="Script" path="res://scenes/game_manager.gd" id="14_2yr2j"]
+[ext_resource type="PackedScene" uid="uid://dcrq6jxmegiaw" path="res://scenes/fish_school.tscn" id="15_uwxp5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1fyuw"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -2036,6 +2039,24 @@ skeleton = NodePath("")
 transform = Transform3D(95.6384, -58.2863, -2.54777e-06, 0, -4.89568e-06, 112, -58.2863, -95.6384, -4.18049e-06, -80.6847, 3.8147e-06, -39.3265)
 mesh = SubResource("ArrayMesh_fgis2")
 skeleton = NodePath("")
+
+[node name="FishSpawns" type="Node3D" parent="."]
+
+[node name="FishArea" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.5158, 5.04965, 48.9438)
+
+[node name="FishArea2" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.3413, 0, 31.229)
+
+[node name="FishArea3" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.0692, 0, 38.6722)
+
+[node name="FishArea4" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.0187, 0, 46.0869)
+
+[node name="Game Manager" type="Node" parent="."]
+script = ExtResource("14_2yr2j")
+fish_school = ExtResource("15_uwxp5")
 
 [editable path="Harbour"]
 [editable path="Foliage/Flowers"]
