@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu6jcrs27qwy3"]
+
+[ext_resource type="PackedScene" uid="uid://cr1p40tegdg1m" path="res://assets/Harbour.fbx" id="1_opggj"]
+[ext_resource type="Script" path="res://scripts/harbour.gd" id="2_ftfxv"]
+
+[node name="Harbour" instance=ExtResource("1_opggj")]
+script = ExtResource("2_ftfxv")
