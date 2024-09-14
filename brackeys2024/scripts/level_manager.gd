@@ -26,6 +26,7 @@ func start_level(level):
 	in_game_ui.size = Vector2(viewport_width,viewport_height)
 	in_game_ui.goal_text.text = str(levels[level]["goal"])
 	StageTimer.end_stage_time = levels[level]["timer"]
+	StageTimer.connect("phase_changed",process_phase)
 	add_child(pause_menu)
 	StageTimer.start_timer()
 	if tutorial:
@@ -43,3 +44,6 @@ func quit():
 func initiate_display(message):
 	if in_game_ui:
 		in_game_ui.display_tip(message)
+
+func process_phase():
+	pass

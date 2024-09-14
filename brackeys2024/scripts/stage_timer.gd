@@ -12,6 +12,8 @@ var paused_start
 var paused_resumed
 var pause_adjustment = 0
 
+signal phase_changed
+
 func start_timer():
 	var pause_adjustment = 0
 	start_stage_time = Time.get_ticks_msec()/1000
