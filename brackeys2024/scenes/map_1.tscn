@@ -1,8 +1,8 @@
 [gd_scene load_steps=37 format=4 uid="uid://cfw585he2plsg"]
 
-[ext_resource type="PackedScene" uid="uid://6gbsieuh65ij" path="res://scenes/ship.tscn" id="1_7ejx5"]
+[ext_resource type="PackedScene" uid="uid://b76c418knjxm2" path="res://scenes/ship.tscn" id="1_7ejx5"]
 [ext_resource type="Script" path="res://scripts/top_camera.gd" id="1_c8ffa"]
-[ext_resource type="PackedScene" uid="uid://dadyao6gac3dr" path="res://scenes/water.tscn" id="3_8cxwg"]
+[ext_resource type="PackedScene" uid="uid://8jln4u20f5mh" path="res://scenes/water.tscn" id="3_8cxwg"]
 [ext_resource type="MeshLibrary" uid="uid://cvryiq1j563u4" path="res://mesh library/Map Tiles.tres" id="3_c3i77"]
 [ext_resource type="Texture2D" uid="uid://cpjd0i4142kxi" path="res://assets/textures/Colour Pallete 8x8.png" id="4_4mfrd"]
 [ext_resource type="MeshLibrary" uid="uid://u8wqo5d6hadx" path="res://mesh library/Flowers.tres" id="5_wje78"]

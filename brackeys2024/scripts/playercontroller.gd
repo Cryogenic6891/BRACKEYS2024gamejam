@@ -29,6 +29,7 @@ func _physics_process(delta):
 		is_submerged = true
 		apply_central_force(Vector3.UP * float_force * gravity * depth)
 	check_capsized(delta)
+
 	
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if not is_submerged:
@@ -39,7 +40,6 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# player input
 	var forward_input = Input.get_action_strength("ui_up") - Input.get_action_strength("ui_down")
 	var turn_input = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
-		
 	
 	# rotation as torque
 	if turn_input != 0:

@@ -58,7 +58,7 @@ float fbm(vec2 uv) {
     float amplitude = 0.5;
     float frequency = 3.0;
 	float value = 0.0;
-	
+
     for(int i = 0; i < octaves; i++) {
         value += amplitude * noise(frequency * uv);
         amplitude *= 0.5;
@@ -79,7 +79,7 @@ float circ(vec2 pos, vec2 c, float s)
 float waterlayer(vec2 uv)
 {
     uv = mod(uv, 1.0); // Clamp to [0..1]
-	
+
     float ret = 1.0;
     ret += circ(uv, vec2(0.37378, 0.277169), 0.0268181);
     ret += circ(uv, vec2(0.0317477, 0.540372), 0.0193742);
@@ -172,7 +172,7 @@ vec3 water(vec2 uv, vec3 cdir, float iTime)
     uv += a * h;
     h = sin(0.841471 * uv.x - 0.540302 * uv.y + iTime);
     uv += a * h;
-    
+
     // Texture distortion
     float d1 = mod(uv.x + uv.y, M_2PI);
     float d2 = mod((uv.x + uv.y + 0.25) * 1.3, M_6PI);
@@ -182,7 +182,7 @@ vec3 water(vec2 uv, vec3 cdir, float iTime)
     	sin(d1) * 0.15 + sin(d2) * 0.05,
     	cos(d1) * 0.15 + cos(d2) * 0.05
     );
-    
+
     vec3 ret = mix(WATER_COL.rgb, WATER2_COL.rgb, waterlayer(uv + dist.xy));
     ret = mix(ret, FOAM_COL.rgb, waterlayer(vec2(1.0) - uv - dist.yx));
     return ret;
@@ -192,16 +192,16 @@ vec3 water(vec2 uv, vec3 cdir, float iTime)
 void vertex() {
     // Calculate the distance the wave has moved based on time
     float time_offset = TIME * tidal_speed;
-    
+
     // Project vertex position onto the wave direction to get its distance along the wave
     float tidal_position = dot(VERTEX.xyz, tidal_direction) - time_offset;
-    
+
     // Wave phase determines the height of the wave at this point
     float phase = mod(tidal_position, tidal_length) / tidal_length;
-    
+
     // Create a sine wave to simulate the wave movement
     float tidal_form = sin(phase * 2.0 * PI);
-    
+
     tidal_form = pow(abs(tidal_form), tidal_steepness) * sign(tidal_form);
     float height_increase = min(phase * 3.0, 1.0);
     float tidal_height_mod = tidal_form * tidal_height * height_increase * exp(-phase * crest_falloff);
@@ -211,6 +211,6 @@ void vertex() {
 void fragment()
 {
 	vec2 uv = UV;
-	
+
     ALBEDO = water(uv * tile, vec3(0,1,0), TIME * distortion_speed);
 }

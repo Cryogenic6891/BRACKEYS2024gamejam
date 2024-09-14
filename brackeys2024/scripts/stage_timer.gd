@@ -28,7 +28,6 @@ func _process(delta):
 		if not phases.is_empty():
 			if phases[0][1] <= stage_time_min + fraction_of_minute:
 				current_phase = phases.pop_front()
-		print(get_timer())
 
 func get_timer() -> String:
 	var min : String
