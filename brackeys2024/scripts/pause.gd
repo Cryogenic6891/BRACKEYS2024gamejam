@@ -11,10 +11,8 @@ func _on_resume_pressed():
 	panel.visible = false
 	StageTimer.pause_timer(false)
 
-
 func _on_h_slider_value_changed(value):
 	UI.volume_change(value)
-
 
 func _on_exit_game_pressed():
 	panel.visible = false

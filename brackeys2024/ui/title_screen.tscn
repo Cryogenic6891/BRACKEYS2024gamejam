@@ -37,6 +37,8 @@ alignment = 1
 
 [node name="Title" type="Label" parent="BackPanel/Main"]
 layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 10
 theme_override_font_sizes/font_size = 62
 text = "Stormbound"
 horizontal_alignment = 1
