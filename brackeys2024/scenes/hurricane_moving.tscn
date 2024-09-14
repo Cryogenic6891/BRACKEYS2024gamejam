@@ -7,6 +7,31 @@
 radius = 10.0
 height = 100.0
 
+[sub_resource type="Animation" id="Animation_6lpmt"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TidalWave:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(13, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TidalWave:position:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_2ypt2"]
 resource_name = "twisting"
 length = 5.328
@@ -121,31 +146,6 @@ tracks/9/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.333333, 13, 13, -0.332667, 1, 0.334, 12, 13, -0.332, 11, 0.334667, -15, 13, -0.331333, -16, 0.335333, 7, 0, -0.330667, 18, 0.336, -21, -13, -0.33, -9, 0.336667, 14, -13, -0.329333, 13, 0.337333, -8, -13, -0.328667, -11, 0.338, 27, -1, -0.328, 15, 0.00533342, 15),
 "times": PackedFloat32Array(0.00999951, 0.666, 1.332, 1.998, 2.664, 3.33, 3.996, 4.662, 5.33333)
-}
-
-[sub_resource type="Animation" id="Animation_6lpmt"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TidalWave:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(13, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TidalWave:position:z")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kl880"]

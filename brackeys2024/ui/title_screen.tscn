@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bne2xcb7bhlk3"]
+[gd_scene load_steps=2 format=3 uid="uid://bne2xcb7bhlk3"]
+
+[ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_63flo"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_63flo")
 
 [node name="BackPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -34,6 +37,8 @@ alignment = 1
 
 [node name="Title" type="Label" parent="BackPanel/Main"]
 layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 10
 theme_override_font_sizes/font_size = 62
 text = "Stormbound"
 horizontal_alignment = 1
@@ -48,17 +53,42 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "How To Play"
 
-[node name="Options" type="Button" parent="BackPanel/Main"]
+[node name="Volume" type="HBoxContainer" parent="BackPanel/Main"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Options"
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="BackPanel/Main/Volume"]
+layout_mode = 2
+text = "Volume     "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="BackPanel/Main/Volume"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+value = 100.0
+rounded = true
+ticks_on_borders = true
 
 [node name="ExitGame" type="Button" parent="BackPanel/Main"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Exit"
 
-[node name="Main2" type="VBoxContainer" parent="BackPanel"]
+[node name="HSeparator" type="HSeparator" parent="BackPanel/Main"]
+layout_mode = 2
+
+[node name="Credits" type="Label" parent="BackPanel/Main"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Credit: Bog, Cam, Chad, and Raz
+Extra Credit: NekotoArts (water shader)"
+horizontal_alignment = 1
+
+[node name="HowToPlay" type="VBoxContainer" parent="BackPanel"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -74,28 +104,57 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Title" type="Label" parent="BackPanel/Main2"]
+[node name="Control" type="Label" parent="BackPanel/HowToPlay"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 62
-text = "Stormbound"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 28
+text = "Controls"
 
-[node name="EnterGame" type="Button" parent="BackPanel/Main2"]
+[node name="ControlText" type="RichTextLabel" parent="BackPanel/HowToPlay"]
+layout_mode = 2
+size_flags_horizontal = 0
+bbcode_enabled = true
+text = "[b]Movment: [/b] WASD, Arrow Keys
+
+[b]Action: [/b] Enter, Space
+
+[b]Pause: [/b] Escape"
+fit_content = true
+autowrap_mode = 0
+
+[node name="HSeparator" type="HSeparator" parent="BackPanel/HowToPlay"]
+layout_mode = 2
+
+[node name="Objective" type="Label" parent="BackPanel/HowToPlay"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Objective"
+
+[node name="ObjectiveText" type="RichTextLabel" parent="BackPanel/HowToPlay"]
+layout_mode = 2
+size_flags_horizontal = 0
+bbcode_enabled = true
+text = "[b]Search: [/b] Find fishing spots and enter it with the boat
+
+[b]Gather: [/b] To catch a fish play a mini game
+
+[b]Score: [/b] Bring fish back to the dock to score points
+
+[b]Avoid: [/b] If you hit a wall, tidal wave, or hurricane you lose some fish
+
+[b]Goal: [/b] Reach the score goal before the timer ends"
+fit_content = true
+autowrap_mode = 0
+
+[node name="HSeparator2" type="HSeparator" parent="BackPanel/HowToPlay"]
+layout_mode = 2
+
+[node name="ReturnToMain" type="Button" parent="BackPanel/HowToPlay"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Enter Game"
+text = "Return To Main"
 
-[node name="HowToPlay" type="Button" parent="BackPanel/Main2"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "How To Play"
-
-[node name="Options" type="Button" parent="BackPanel/Main2"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Options"
-
-[node name="ExitGame" type="Button" parent="BackPanel/Main2"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Exit"
+[connection signal="pressed" from="BackPanel/Main/EnterGame" to="." method="_on_enter_game_pressed"]
+[connection signal="pressed" from="BackPanel/Main/HowToPlay" to="." method="_on_how_to_play_pressed"]
+[connection signal="value_changed" from="BackPanel/Main/Volume/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="BackPanel/Main/ExitGame" to="." method="_on_exit_game_pressed"]
+[connection signal="pressed" from="BackPanel/HowToPlay/ReturnToMain" to="." method="_on_return_to_main_pressed"]

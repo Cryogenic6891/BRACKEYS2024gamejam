@@ -1,0 +1,125 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuemfwoglv24y"]
+
+[ext_resource type="Script" path="res://scripts/in_game_ui.gd" id="1_pr2sf"]
+
+[node name="GameUI" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 800.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_pr2sf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_right = 178.0
+offset_bottom = 102.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="UIBox" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TimerBox" type="HBoxContainer" parent="MarginContainer/UIBox"]
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="StageTimerLabel" type="Label" parent="MarginContainer/UIBox/TimerBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "Time: "
+
+[node name="StageTimer" type="Label" parent="MarginContainer/UIBox/TimerBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "00:00"
+
+[node name="FishBox" type="HBoxContainer" parent="MarginContainer/UIBox"]
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="FishLabel" type="Label" parent="MarginContainer/UIBox/FishBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "Fish:"
+
+[node name="FishCounter" type="Label" parent="MarginContainer/UIBox/FishBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="FishFull" type="Label" parent="MarginContainer/UIBox/FishBox"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "/20"
+
+[node name="Score" type="HBoxContainer" parent="MarginContainer/UIBox"]
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/UIBox/Score"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "Score:"
+
+[node name="ScoreCounter" type="Label" parent="MarginContainer/UIBox/Score"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="TipBox" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = -71.0
+offset_right = 310.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TipBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="message" type="Label" parent="TipBox/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Find the fish shadows to catch them!"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="TipBox"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -76.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "Close"

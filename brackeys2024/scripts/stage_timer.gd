@@ -8,8 +8,12 @@ var phase_amount: float = 3
 var current_phase: Array # [phase number,phase start time]
 var phases: Array # Data structure: [[phase number,phase start time], [next phase,next phase time]
 var timer_started: bool = false
+var paused_start
+var paused_resumed
+var pause_adjustment = 0
 
 func start_timer():
+	var pause_adjustment = 0
 	start_stage_time = Time.get_ticks_msec()/1000
 	for phase in phase_amount:
 		var phase_switch = end_stage_time*(phase/phase_amount)
@@ -19,7 +23,7 @@ func start_timer():
 
 func _process(delta):
 	if timer_started:
-		stage_time_sec = Time.get_ticks_msec()/1000 - start_stage_time
+		stage_time_sec = Time.get_ticks_msec()/1000 - start_stage_time - pause_adjustment
 		if stage_time_sec >= 60:
 			stage_time_min += 1
 			start_stage_time = Time.get_ticks_msec()/1000
@@ -28,7 +32,6 @@ func _process(delta):
 		if not phases.is_empty():
 			if phases[0][1] <= stage_time_min + fraction_of_minute:
 				current_phase = phases.pop_front()
-		print(get_timer())
 
 func get_timer() -> String:
 	var min : String
@@ -42,3 +45,10 @@ func get_timer() -> String:
 	else:
 		sec = str(stage_time_sec)
 	return min+":"+sec
+
+func pause_timer(paused:bool):
+	if paused:
+		paused_start = Time.get_ticks_msec()/1000
+	else:
+		paused_resumed = Time.get_ticks_msec()/1000
+		pause_adjustment = paused_resumed - paused_start
