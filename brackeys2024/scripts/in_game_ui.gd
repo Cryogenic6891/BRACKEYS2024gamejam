@@ -2,9 +2,10 @@ extends Control
 
 var time
 @onready var time_text = $MarginContainer/UIBox/TimerBox/StageTimer
+@onready var score_text = $MarginContainer/UIBox/ScoreBox/ScoreCounter
+@onready var goal_text = $MarginContainer/UIBox/GoalBox/GoalCounter
 @onready var tip_box = $TipBox
 @onready var tip_message = $TipBox/VBoxContainer/message
-@onready var tip_close = $TipBox/CloseButton
 
 func _process(delta):
 	if LevelManager.game_running:
@@ -13,4 +14,5 @@ func _process(delta):
 func display_tip(message):
 	tip_message.text = message
 	tip_box.visible = true
-	await get_tree().create_timer(10).timeout or tip_close.pressed
+	await get_tree().create_timer(10).timeout
+	tip_box.visible = false
