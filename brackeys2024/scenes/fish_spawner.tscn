@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://scripts/fish_spawner.gd" id="1_5ruks"]
 
 [node name="FishSpawner" type="Marker2D"]
-position = Vector2(650, 0)
 script = ExtResource("1_5ruks")
 
 [node name="FishSpawnTimer" type="Timer" parent="."]
