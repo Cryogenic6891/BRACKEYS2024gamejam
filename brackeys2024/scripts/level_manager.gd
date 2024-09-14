@@ -95,6 +95,7 @@ func spawn_tidal_wave():
 		new_tide.tidal_direction = Vector3.LEFT
 	if spawn_loc.name.containsn("RIGHT"):
 		new_tide.tidal_direction = Vector3.RIGHT
+	add_child(new_tide)
 
 func spawn_hurricane():
 	if hurricane_spawns.is_empty():
