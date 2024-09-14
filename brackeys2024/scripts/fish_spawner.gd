@@ -1,9 +1,12 @@
 extends Marker2D
 
 @onready var fish_node = preload("res://scenes/fish.tscn")
+@onready var fish_spawn_timer = $FishSpawnTimer
 const HAMMERHEAD_SHARK = preload("res://assets/textures/Hammerhead Shark.png")
 const MEDIUM_FISH = preload("res://assets/textures/Medium Fish.png")
 const SMALL_FISH = preload("res://assets/textures/Small Fish.png")
+
+
 
 var fish_dictionary = {
 	"small":{"fish_points":10,"fish_image":SMALL_FISH},
@@ -26,7 +29,7 @@ func _on_fish_spawn_timer_timeout() -> void:
 		add_child(new_fish)
 		fish_spawn_total -= 1
 	elif fish_spawn_total == 0:
-		$FishSpawnTimer.stop
+		fish_spawn_timer.stop()
 		
 		
 

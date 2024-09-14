@@ -12,7 +12,7 @@ func _ready() -> void:
 	total_fish = $FishSpawner.fish_spawn_total
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	catch_fish(fish)
 	update_score_label()
 	monitor_end_of_minigame()
@@ -32,10 +32,10 @@ func update_score_label() -> void:
 
 #This monitors keyboard press and provides a pentaly for pressing it whilly nilly
 #It also feeds the fish information to the calculator function
-func catch_fish(fish) -> void:
+func catch_fish(fishes) -> void:
 	if Input.is_action_just_pressed("space_key") && is_in_zone == true:
 		print("Space_Pressed")
-		fish_point_calculator(fish)
+		fish_point_calculator(fishes)
 		fish.queue_free()
 	elif Input.is_action_just_pressed("space_key") && is_in_zone == false:
 		print("Pentalty")
@@ -43,16 +43,16 @@ func catch_fish(fish) -> void:
 	else:
 		pass
 
-func fish_point_calculator(fish) -> void:
-	var fish_score = (100 - abs(fish.position.x+$FishSpawner.position.x)) * 1
-	print("FISH CAUGHT! A " + str(fish_score) + " Pointer! With a value of: " + str(fish.fish_value))
-	score += fish_score + fish.fish_value
+func fish_point_calculator(fishes) -> void:
+	var fish_score = (100 - abs(fishes.position.x+$FishSpawner.position.x)) * 1
+	print("FISH CAUGHT! A " + str(fish_score) + " Pointer! With a value of: " + str(fishes.fish_value))
+	score += fish_score + fishes.fish_value
 	
 
 func _on_capture_area_area_entered(area: Area2D) -> void:
 	is_in_zone = true
 	fish = area
 	
-func _on_capture_area_area_exited(area: Area2D) -> void:
+func _on_capture_area_area_exited(_area: Area2D) -> void:
 	is_in_zone = false
 	fish_quantity += 1

@@ -32,7 +32,6 @@ func calculate_wave_height(uv: Vector2, current_time: float) -> float:
 	return dist.y * wave_height
 
 func update_wave_heights(global_positions):
-	var wave_heights
 	var uv = global_to_uv(global_positions)
 	var height = calculate_wave_height(uv, time)
 	return height
