@@ -1,17 +1,15 @@
 extends Area3D
 
 var player
-@export var fish_game: PackedScene
+@export var fish_game = preload("res://scenes/fish_game.tscn")
 
 
 func _on_body_entered(body: Node3D) -> void:
-	print("Player in the body")
 	if body.is_in_group("player"): #If the ship enters the area, it's placed into the variable
 		player = body
 
 
 func _on_body_exited(body: Node3D) -> void:
-	print("Player left")
 	if body.is_in_group("player"): #If the ship exits the area, it's removed from the variable
 		player = null
 
