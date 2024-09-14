@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cutq4aarlsrq3" path="res://assets/textures/Flowers Yellow.png" id="10_8fme7"]
 [ext_resource type="Texture2D" uid="uid://drmkx2qgys5je" path="res://assets/textures/Flowers Blue.png" id="11_0scix"]
 [ext_resource type="PackedScene" uid="uid://ctw2bqhu48ksm" path="res://assets/Shrubs.fbx" id="12_cdt2d"]
-[ext_resource type="PackedScene" uid="uid://ob2odsgwsktd" path="res://scenes/fish_area.tscn" id="13_yc2fi"]
+[ext_resource type="PackedScene" path="res://scenes/fish_area.tscn" id="13_yc2fi"]
 [ext_resource type="Script" path="res://scenes/game_manager.gd" id="14_2yr2j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1fyuw"]
@@ -2042,13 +2042,13 @@ skeleton = NodePath("")
 [node name="FishSpawns" type="Node3D" parent="."]
 
 [node name="FishArea" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.5158, 5.04965, 48.9438)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.3002, 5.04966, 80.7379)
 
 [node name="FishArea2" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.3413, 0, 31.229)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.738, 0, 16.8399)
 
 [node name="FishArea3" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.0692, 0, 38.6722)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.475899, 0, 93.3229)
 
 [node name="FishArea4" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.0187, 0, 46.0869)
@@ -2088,12 +2088,15 @@ offset_right = 1276.0
 offset_bottom = 796.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Control"]
+visible = false
 layout_mode = 0
 offset_right = 1284.0
 offset_bottom = 802.0
 
 [node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
 unique_name_in_owner = true
+handle_input_locally = false
+render_target_update_mode = 0
 
 [editable path="Harbour"]
 [editable path="Foliage/Flowers"]

@@ -1,23 +1,28 @@
 extends Node2D
 
-
 var capture_area: Area2D
 var is_in_zone = false
 var fish: Area2D
 var score = 0
-var fish_quantity = 0
+var fish_quantity: int
+var total_fish: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_start_minigame()
+	total_fish = $FishSpawner.fish_spawn_total
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	catch_fish(fish)
 	update_score_label()
+	monitor_end_of_minigame()
 	
-func _start_minigame() -> void:
-	capture_area = $CaptureArea
+func monitor_end_of_minigame():
+	if total_fish == fish_quantity:
+		var subview_port = get_parent().get_node("%SubViewport")
+		var game_view = subview_port.get_parent()
+		game_view.visible = false
+		queue_free()
 
 func update_score_label() -> void:
 	var score_label_node = $CanvasLayer/ScoreLabel
@@ -42,7 +47,7 @@ func fish_point_calculator(fish) -> void:
 	var fish_score = (100 - abs(fish.position.x+$FishSpawner.position.x)) * 1
 	print("FISH CAUGHT! A " + str(fish_score) + " Pointer! With a value of: " + str(fish.fish_value))
 	score += fish_score + fish.fish_value
-	fish_quantity += 1
+	
 
 func _on_capture_area_area_entered(area: Area2D) -> void:
 	is_in_zone = true
@@ -50,3 +55,4 @@ func _on_capture_area_area_entered(area: Area2D) -> void:
 	
 func _on_capture_area_area_exited(area: Area2D) -> void:
 	is_in_zone = false
+	fish_quantity += 1
