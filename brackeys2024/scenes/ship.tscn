@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=9 format=3 uid="uid://6gbsieuh65ij"]
 
 [ext_resource type="Script" path="res://scripts/playercontroller.gd" id="1_ep2o1"]

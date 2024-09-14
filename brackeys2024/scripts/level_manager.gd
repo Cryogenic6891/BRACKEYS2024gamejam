@@ -4,15 +4,18 @@ var game_running:bool = false
 var pause = preload("res://ui/pause.tscn")
 var ui = preload("res://ui/in_game_ui.tscn")
 
-var phase
+var phase = 1
 
 var in_game_ui
-var levels:Dictionary = {1:{"scene":"res://scenes/map_1.tscn","timer":12,"goal":1000}}
+var levels:Dictionary = {1:{"scene":"res://scenes/map_1.tscn","timer":1,"goal":1000}}
 @onready var viewport_width: float = ProjectSettings.get_setting("display/window/size/viewport_width")
 @onready var viewport_height: float = ProjectSettings.get_setting("display/window/size/viewport_height")
 var tutorial = true
 var tutorial_map = {0:"TIP:\nFind the fish shadows to catch them!",1:"TIP:\nPress space or enter when the image lines up\n to catch the fish", 2:"TIP:\nYou can hold up to 20 fish bring them \n to the dock to score them"}
 var pause_menu
+
+var tide_spawns = []
+var hurricane_spawns = []
 
 func start_level(level):
 	if not level == 1:
@@ -45,5 +48,15 @@ func initiate_display(message):
 	if in_game_ui:
 		in_game_ui.display_tip(message)
 
-func process_phase():
-	pass
+func process_phase(new_phase):
+	phase = new_phase[0]
+
+func play_phase(phase):
+	match phase:
+		1:
+			pass 
+		2:
+			pass
+		3:
+			pass
+		

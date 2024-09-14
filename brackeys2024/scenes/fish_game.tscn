@@ -1,14 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcbpk7yd7aqv7"]
+[gd_scene load_steps=5 format=3 uid="uid://dcbpk7yd7aqv7"]
 
 [ext_resource type="Script" path="res://scripts/fish_game.gd" id="1_rr6hl"]
-[ext_resource type="PackedScene" path="res://scenes/fish_spawner.tscn" id="3_4mnn3"]
+[ext_resource type="Texture2D" uid="uid://crbm6eg46g5vi" path="res://assets/textures/Hook.png" id="2_7ltu2"]
+[ext_resource type="PackedScene" uid="uid://p1bpuo11ick5" path="res://scenes/fish_spawner.tscn" id="3_4mnn3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_01lcp"]
-radius = 19.0
+radius = 45.0
 height = 92.0
 
 [node name="FishGame" type="Node2D"]
-position = Vector2(-3, -3)
 script = ExtResource("1_rr6hl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -33,16 +33,18 @@ metadata/_edit_use_anchors_ = true
 collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="CaptureArea"]
+position = Vector2(3, -72)
 scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_7ltu2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CaptureArea"]
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_01lcp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(5, 2)
 
 [node name="FishSpawner" parent="." instance=ExtResource("3_4mnn3")]
+position = Vector2(650, 0)
 
 [connection signal="area_entered" from="CaptureArea" to="." method="_on_capture_area_area_entered"]
 [connection signal="area_exited" from="CaptureArea" to="." method="_on_capture_area_area_exited"]

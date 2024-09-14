@@ -4,7 +4,7 @@ extends Node
 
 #Sets the goal for the level, in our game could set the amount of possible fishing spots at one time
 @export var level_goal := 3
-@export var fish_school: PackedScene
+@export var fish_school = preload("res://scenes/fish_school.tscn")
 
 ##Create two empty arrays outside of any function
 var possible_fish_spawns := [

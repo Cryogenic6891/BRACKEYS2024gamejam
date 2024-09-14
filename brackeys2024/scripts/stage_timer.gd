@@ -12,7 +12,7 @@ var paused_start
 var paused_resumed
 var pause_adjustment = 0
 
-signal phase_changed
+signal phase_changed(phase)
 
 func start_timer():
 	var pause_adjustment = 0
@@ -34,6 +34,7 @@ func _process(delta):
 		if not phases.is_empty():
 			if phases[0][1] <= stage_time_min + fraction_of_minute:
 				current_phase = phases.pop_front()
+				phase_changed.emit(current_phase)
 
 func get_timer() -> String:
 	var min : String
