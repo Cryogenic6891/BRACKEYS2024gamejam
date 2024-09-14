@@ -1,6 +1,9 @@
 extends RigidBody3D
 
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+@onready var ship_audio_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var toot_audio_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
+
 
 # Movement
 var move_speed: float = 5.0  # Speed of forward/backward movement
@@ -29,7 +32,15 @@ func _physics_process(delta):
 		is_submerged = true
 		apply_central_force(Vector3.UP * float_force * gravity * depth)
 	check_capsized(delta)
-
+	
+	if Input.is_action_pressed("ui_up"):
+		update_player_audio("MOVING")
+	else:
+		update_player_audio("IDLE")
+	
+	if Input.is_action_just_pressed("TOOT"):
+		toot_audio_player.play()
+		
 	
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if not is_submerged:
@@ -84,3 +95,8 @@ func reset_boat_orientation():
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
 	capsized_timer = 0.0
+
+func update_player_audio(audio_name: String):
+	if audio_name != ship_audio_player["parameters/switch_to_clip"]:
+		ship_audio_player.play()
+		ship_audio_player["parameters/switch_to_clip"] = audio_name

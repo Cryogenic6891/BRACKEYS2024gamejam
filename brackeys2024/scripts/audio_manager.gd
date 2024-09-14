@@ -9,6 +9,7 @@ func _ready() -> void:
 	jukebox.set_stream(PIRATE_CATCH_A_PARROT_INTENSITY_1)
 	
 	jukebox.play()
+	jukebox.set_volume_db(-7.5)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
