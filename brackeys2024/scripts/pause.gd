@@ -9,6 +9,7 @@ func _ready():
 func _on_resume_pressed():
 	get_tree().paused = false
 	panel.visible = false
+	StageTimer.pause_timer(false)
 
 
 func _on_h_slider_value_changed(value):
@@ -20,3 +21,6 @@ func _on_exit_game_pressed():
 	LevelManager.game_running = false
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://ui/title_screen.tscn")
+	LevelManager.quit()
+	StageTimer.pause_adjustment = 0
+	queue_free()
