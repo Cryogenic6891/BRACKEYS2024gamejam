@@ -1,6 +1,6 @@
 [gd_scene load_steps=37 format=4 uid="uid://cfw585he2plsg"]
 
-[ext_resource type="PackedScene" uid="uid://b76c418knjxm2" path="res://scenes/ship.tscn" id="1_7ejx5"]
+[ext_resource type="PackedScene" uid="uid://6gbsieuh65ij" path="res://scenes/ship.tscn" id="1_7ejx5"]
 [ext_resource type="Script" path="res://scripts/top_camera.gd" id="1_c8ffa"]
 [ext_resource type="PackedScene" uid="uid://dadyao6gac3dr" path="res://scenes/water.tscn" id="3_8cxwg"]
 [ext_resource type="MeshLibrary" uid="uid://cvryiq1j563u4" path="res://mesh library/Map Tiles.tres" id="3_c3i77"]
@@ -309,7 +309,7 @@ script = ExtResource("1_c8ffa")
 player_node = NodePath("../Ship")
 
 [node name="Ship" parent="." node_paths=PackedStringArray("water") instance=ExtResource("1_7ejx5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, 23.3324)
+transform = Transform3D(-0.997244, 0, 0.0741955, 0, 1, 0, -0.0741955, 0, -0.997244, 26.8919, 0, 23.3324)
 water = NodePath("../Water")
 
 [node name="Water" parent="." instance=ExtResource("3_8cxwg")]
