@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://r57exe14jujl"]
+[gd_scene load_steps=4 format=3 uid="uid://r57exe14jujl"]
 
 [ext_resource type="Script" path="res://scripts/fish_controller.gd" id="1_f6ktc"]
+[ext_resource type="Texture2D" uid="uid://bgt27l8ln1hux" path="res://assets/textures/Small Fish.png" id="2_v7wqf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_01lcp"]
 radius = 19.0
@@ -10,8 +11,9 @@ height = 92.0
 collision_mask = 2
 script = ExtResource("1_f6ktc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="FishSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_v7wqf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
