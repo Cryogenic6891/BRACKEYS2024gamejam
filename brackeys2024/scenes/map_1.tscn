@@ -2045,13 +2045,13 @@ skeleton = NodePath("")
 [node name="FishSpawns" type="Node3D" parent="."]
 
 [node name="FishArea" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.5158, 5.04965, 48.9438)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.3002, 5.04966, 80.7379)
 
 [node name="FishArea2" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.3413, 0, 31.229)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.738, 0, 16.8399)
 
 [node name="FishArea3" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.0692, 0, 38.6722)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.475899, 0, 93.3229)
 
 [node name="FishArea4" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.0187, 0, 46.0869)

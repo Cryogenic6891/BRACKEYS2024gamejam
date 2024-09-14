@@ -25,8 +25,10 @@ func _on_fish_spawn_timer_timeout() -> void:
 		new_fish.get_node("FishSprite").texture = fish_dictionary[selected_fish]["fish_image"]
 		add_child(new_fish)
 		fish_spawn_total -= 1
-	else:
-		pass
+	elif fish_spawn_total == 0:
+		$FishSpawnTimer.stop
+		
+		
 
 func select_fish_size():
 	randomize()
