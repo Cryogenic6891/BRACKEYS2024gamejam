@@ -5,7 +5,7 @@ uniform float tidal_height = 5.0; // Maximum height of the wave
 uniform float tidal_length = 20.0; // Length of the wave (distance between crests)
 uniform float tidal_steepness = 0.8; // Controls how sharp the crest of the wave is
 uniform vec3 tidal_direction = vec3(0.0, 0.0, 1.0); // Direction the wave moves
-
+uniform float tidal_time = 1.0;
 // Controls how the wave fades out as it breaks (larger = slower fade)
 uniform float crest_falloff = 2.0;
 
@@ -191,7 +191,7 @@ vec3 water(vec2 uv, vec3 cdir, float iTime)
 
 void vertex() {
     // Calculate the distance the wave has moved based on time
-    float time_offset = TIME * tidal_speed;
+    float time_offset = time * tidal_speed;
 
     // Project vertex position onto the wave direction to get its distance along the wave
     float tidal_position = dot(VERTEX.xyz, tidal_direction) - time_offset;

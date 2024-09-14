@@ -7,12 +7,12 @@ extends RigidBody3D
 
 # Movement
 var move_speed: float = 5.0  # Speed of forward/backward movement
-var rotation_speed: float = 2000  # Speed of rotation (turning)
-var acceleration_forward: float = 75000  # Acceleration forward
-var acceleration_backward: float = 12000 # Acceleration backward
+var rotation_speed: float = 200  # Speed of rotation (turning)
+var acceleration_forward: float = 7500  # Acceleration forward
+var acceleration_backward: float = 1200 # Acceleration backward
 
 # Buoyancy
-var float_force: float = 16
+var float_force: float = 1.3
 var water_drag: float = 0.028
 var water_angular_drag: float = 0.05
 const water_height: float = 0.0
@@ -20,7 +20,7 @@ var is_submerged: bool = false
 @export var water: MeshInstance3D
 
 # Stabilization
-var stabilization_force: float = 2000
+var stabilization_force: float = 200
 var is_capsized: bool = false
 var capsized_timer: float = 0.0
 var capsized_threshold: float = 5.0

@@ -68,10 +68,10 @@ func play_phase():
 			light.light_color = morning_light
 		2:
 			light.light_color = afternoon_light
-			tide_chance += 0.05
+			tide_chance += 0.2
 		3:
 			light.light_color = storm_light
-			tide_chance += 0.05
+			tide_chance += 0.2
 			hurricane_chance += 0.025
 
 func roll_for_hazard():
@@ -84,17 +84,20 @@ func roll_for_hazard():
 
 func spawn_tidal_wave():
 	if tide_spawns.is_empty():
-		tide_spawns.append_array(get_tree().get_first_node_in_group("tidespawn").get_children())
+		tide_spawns.append_array(get_tree().get_nodes_in_group("tidespawn"))
 	var new_tide = tidal_wave.instantiate()
 	var spawn_loc = tide_spawns.pick_random()
+	var dir
 	if spawn_loc.name.containsn("FORWARD"):
-		new_tide.tidal_direction = Vector3.FORWARD
+		dir = Vector3.FORWARD
 	if spawn_loc.name.containsn("BACK"):
-		new_tide.tidal_direction = Vector3.BACK
+		dir = Vector3.BACK
 	if spawn_loc.name.containsn("LEFT"):
-		new_tide.tidal_direction = Vector3.LEFT
+		dir = Vector3.LEFT
 	if spawn_loc.name.containsn("RIGHT"):
-		new_tide.tidal_direction = Vector3.RIGHT
+		dir = Vector3.RIGHT
+	new_tide.transform.origin = spawn_loc.global_position
+	new_tide.tidal_direction = dir
 	add_child(new_tide)
 
 func spawn_hurricane():
