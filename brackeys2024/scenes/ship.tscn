@@ -9,8 +9,8 @@ rough = true
 absorbent = true
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jip00"]
-radius = 7.0
-height = 25.0
+radius = 8.5
+height = 33.0
 
 [node name="Ship" type="RigidBody3D"]
 mass = 20.0
@@ -18,8 +18,8 @@ physics_material_override = SubResource("PhysicsMaterial_xn0pu")
 script = ExtResource("1_ep2o1")
 
 [node name="Fishing Boat" parent="." instance=ExtResource("2_kvvvr")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -1.29328, -6.01696)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.293, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 5.43822, 0)
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 6.50901, -4.15962)
 shape = SubResource("CapsuleShape3D_jip00")

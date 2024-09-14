@@ -311,7 +311,7 @@ script = ExtResource("1_c8ffa")
 player_node = NodePath("../Ship")
 
 [node name="Ship" parent="." node_paths=PackedStringArray("water") instance=ExtResource("1_7ejx5")]
-transform = Transform3D(-1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, -1, 28.5, 0, 21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, 23.3324)
 water = NodePath("../Water")
 
 [node name="Water" parent="." instance=ExtResource("3_8cxwg")]
