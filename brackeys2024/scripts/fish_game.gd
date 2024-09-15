@@ -32,6 +32,7 @@ func update_score_label() -> void:
 	var fish_count_label = $CanvasLayer/FishCountLabel
 	score_label_node.text = "Score: " + str(score)
 	fish_count_label.text = "Fish Count: " + str(fish_quantity)
+	UI.score += score
 
 #This monitors keyboard press and provides a pentaly for pressing it whilly nilly
 #It also feeds the fish information to the calculator function
