@@ -11,7 +11,7 @@ var player_pos = Vector3(26,0,26)
 var phase = 1
 
 var in_game_ui
-var levels:Dictionary = {1:{"scene":"res://scenes/map_1.tscn","timer":12,"goal":10000}}
+var levels:Dictionary = {1:{"scene":"res://scenes/map_1.tscn","timer":6,"goal":10000}}
 @onready var viewport_width: float = ProjectSettings.get_setting("display/window/size/viewport_width")
 @onready var viewport_height: float = ProjectSettings.get_setting("display/window/size/viewport_height")
 var tutorial = true
@@ -58,7 +58,7 @@ func _process(_delta):
 	if Input.is_action_pressed("ui_cancel") and game_running == true:
 		if not pause_menu:
 			pause_menu = get_tree().get_first_node_in_group("pause")
-		pause_menu.panel.show()
+		pause_menu.show()
 		StageTimer.pause_timer(true)
 		get_tree().paused = true
 

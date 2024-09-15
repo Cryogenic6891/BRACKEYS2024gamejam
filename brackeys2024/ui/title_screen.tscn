@@ -118,7 +118,9 @@ text = "[b]Movment: [/b] WASD, Arrow Keys
 
 [b]Action: [/b] Enter, Space
 
-[b]Pause: [/b] Escape"
+[b]Pause: [/b] Escape
+
+[b]Q: [/b] Honk!"
 fit_content = true
 autowrap_mode = 0
 

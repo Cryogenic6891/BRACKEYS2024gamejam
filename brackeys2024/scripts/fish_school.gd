@@ -1,6 +1,5 @@
 extends Area3D
 
-
 var player
 @export var fish_game = preload("res://scenes/fish_game.tscn")
 
@@ -16,11 +15,7 @@ func _on_body_exited(body: Node3D) -> void:
 
 func _process(_delta: float) -> void:
 	if player: #If player exist in the area allow the interact input to be pressed
-		if Input.is_action_just_pressed("ui_accept"):
-			print("entering game")
-			player.is_fishing = true
-			player.fishing_audio_player.play()
-			
+		if Input.is_action_just_pressed("ui_accept") and get_tree().get_first_node_in_group("subviewport").get_children().is_empty():
 			var new_fish_game = fish_game.instantiate()
 			var subview_port = get_tree().get_first_node_in_group("subviewport")
 			new_fish_game.position.x = subview_port.size.x / 2
@@ -28,9 +23,8 @@ func _process(_delta: float) -> void:
 			var game_view = subview_port.get_parent()
 			game_view.visible = true
 			subview_port.add_child(new_fish_game)
+			GameManager.fish_spawns.erase(self)
 			queue_free()
-			
-			
 			# these lines will be changed $Control/SubViewportContainer/SubViewportfor our game. It should call Raz' minigame
 			#if player.objective_manager.meat_on_back.size() < 3: 
 				#player.objective_manager.add_meat()
