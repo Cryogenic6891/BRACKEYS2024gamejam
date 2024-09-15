@@ -19,3 +19,7 @@ func _on_exit_game_pressed():
 	LevelManager.quit()
 	StageTimer.pause_adjustment = 0
 	queue_free()
+
+
+func _on_reset_button_pressed():
+	get_tree().get_first_node_in_group("player").global_position = LevelManager.player_pos

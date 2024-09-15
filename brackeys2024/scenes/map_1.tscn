@@ -311,7 +311,7 @@ script = ExtResource("1_c8ffa")
 player_node = NodePath("../Ship")
 
 [node name="Ship" parent="." node_paths=PackedStringArray("water") instance=ExtResource("1_7ejx5")]
-transform = Transform3D(-0.997244, 0, 0.0741955, 0, 1, 0, -0.0741955, 0, -0.997244, 26.8919, 0, 23.3324)
+transform = Transform3D(-0.997244, 0, 0.0741955, 0, 1, 0, -0.0741955, 0, -0.997244, 26, 0, 26)
 water = NodePath("../Water")
 
 [node name="Water" parent="." instance=ExtResource("3_8cxwg")]
@@ -2039,21 +2039,29 @@ transform = Transform3D(95.6384, -58.2863, -2.54777e-06, 0, -4.89568e-06, 112, -
 mesh = SubResource("ArrayMesh_fgis2")
 skeleton = NodePath("")
 
-[node name="FishSpawns" type="Node3D" parent="."]
-
-[node name="FishArea" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
+[node name="FishArea" parent="." groups=["fishspawn"] instance=ExtResource("13_yc2fi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.3002, 5.04966, 80.7379)
 
-[node name="FishArea2" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.738, 0, 16.8399)
+[node name="FishArea2" parent="." groups=["fishspawn"] instance=ExtResource("13_yc2fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.4335, 0, 238.96)
 
-[node name="FishArea3" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
+[node name="FishArea3" parent="." groups=["fishspawn"] instance=ExtResource("13_yc2fi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.475899, 0, 93.3229)
 
-[node name="FishArea4" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.0187, 0, 46.0869)
+[node name="FishArea4" parent="." groups=["fishspawn"] instance=ExtResource("13_yc2fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -318.866, 0, 46.0869)
 
-[node name="Game Manager" type="Node" parent="."]
+[node name="FishArea5" parent="." groups=["fishspawn"] instance=ExtResource("13_yc2fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -318.866, 0, 305.586)
+
+[node name="FishArea6" parent="." groups=["fishspawn"] instance=ExtResource("13_yc2fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -434.139, 0, 305.586)
+
+[node name="FishArea7" parent="." groups=["fishspawn"] instance=ExtResource("13_yc2fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -434.139, 0, 161.264)
+
+[node name="FishArea8" parent="." groups=["fishspawn"] instance=ExtResource("13_yc2fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185.651, 0, 161.264)
 
 [node name="RIGHT" type="Node3D" parent="." groups=["tidespawn"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -514.636, 0, -20.4784)
@@ -2070,13 +2078,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -211.063, 0, 335.679)
 [node name="BACK" type="Node3D" parent="." groups=["tidespawn"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -470.21, 0, -117.814)
 
-[node name="HurricaneSpawners" type="Node" parent="." groups=["hurricanespawn"]]
+[node name="HURRICANE1" type="Node3D" parent="." groups=["hurricanespawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.933, 0, 203.099)
 
-[node name="Marker3D" type="Marker3D" parent="HurricaneSpawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -53.5849, 229.027)
-
-[node name="Marker3D2" type="Marker3D" parent="HurricaneSpawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -426.768, -53.5849, -82.9234)
+[node name="HURRICANE2" type="Node3D" parent="." groups=["hurricanespawn"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -426.768, 0, -43.887)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

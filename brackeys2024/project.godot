@@ -20,6 +20,7 @@ StageTimer="*res://scripts/stage_timer.gd"
 UI="*res://scripts/ui_controller.gd"
 LevelManager="*res://scripts/level_manager.gd"
 AudioManager="*res://scripts/audio_manager.gd"
+GameManager="*res://scenes/game_manager.gd"
 
 [display]
 
