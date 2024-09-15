@@ -10,9 +10,6 @@ var time
 func _process(_delta):
 	if LevelManager.game_running:
 		time_text.text = StageTimer.get_timer()
-		score_text.text = str(UI.score)
-
-
 
 func display_tip(message):
 	tip_message.text = message

@@ -40,13 +40,9 @@ func monitor_end_of_minigame() -> void:
 		var game_view = subview_port.get_parent()
 		game_view.visible = false
 		await get_tree().create_timer(2).timeout
-
 		
 		player.is_fishing = false
 		
-
-		UI.score += score
-
 		queue_free()
 
 func update_score_label() -> void:
@@ -54,7 +50,6 @@ func update_score_label() -> void:
 	var fish_count_label = $CanvasLayer/FishCountLabel
 	score_label_node.text = "Score: " + str(score)
 	fish_count_label.text = "Fish Count: " + str(fish_quantity)
-
 
 #This monitors keyboard press and provides a pentaly for pressing it whilly nilly
 #It also feeds the fish information to the calculator function
@@ -84,14 +79,16 @@ func fish_point_calculator(fishes) -> void:
 	print("FISH CAUGHT! A " + str(fish_score) + " Pointer! With a value of: " + str(fishes.fish_value))
 	score += fish_score * fishes.fish_value
 	
-func fish_location_calculator(fishes):
-	var fish_loc = (100 - abs(-fishes.position.x-650))/100
-	return fish_loc
-	
 	if fish_score > 0.90:
 		crit_audio_player.play()
 	else:
 		catch_audio_player.play()
+		
+func fish_location_calculator(fishes):
+	var fish_loc = (100 - abs(-fishes.position.x-650))/100
+	return fish_loc
+
+	
 	
 
 func _on_capture_area_area_entered(area: Area2D) -> void:

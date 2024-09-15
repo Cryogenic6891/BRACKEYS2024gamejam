@@ -2090,7 +2090,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer" groups=["subviewport"]]
+[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
 unique_name_in_owner = true
 handle_input_locally = false
 render_target_update_mode = 0

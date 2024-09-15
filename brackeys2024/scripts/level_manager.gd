@@ -15,14 +15,13 @@ var levels:Dictionary = {1:{"scene":"res://scenes/map_1.tscn","timer":12,"goal":
 @onready var viewport_width: float = ProjectSettings.get_setting("display/window/size/viewport_width")
 @onready var viewport_height: float = ProjectSettings.get_setting("display/window/size/viewport_height")
 var tutorial = true
-var tutorial_map = {0:"TIP:\nFind the fish and press space or enter!",1:"TIP:\nPress space or enter when the image lines up\n with the hook", 2:"TIP:\nYou can hold up to 20 fish bring them \n to the dock to score them"}
+var tutorial_map = {0:"TIP:\nFind the fish shadows to catch them!",1:"TIP:\nPress space or enter when the image lines up\n with the hook", 2:"TIP:\nYou can hold up to 20 fish bring them \n to the dock to score them"}
 var pause_menu
 var tide_spawns = []
 var tide_chance = 0.0
 var hurricane_spawns = []
 var hurricane_chance = 0.0
 var hurricane_num = 0
-var seconds_since_spawn_change = 0
 
 func start_level(level):
 	if not level == 1:
@@ -40,21 +39,12 @@ func start_level(level):
 		StageTimer.connect("phase_changed",process_phase)
 	if not StageTimer.get_signal_connection_list("new_second"):
 		StageTimer.connect("new_second",roll_for_hazard)
-		StageTimer.connect("new_second",update_spawn_change_timer)
 	StageTimer.start_timer()
 	if tutorial:
 		initiate_display(tutorial_map[0])
-	seconds_since_spawn_change = 0
-	await get_tree().create_timer(1).timeout
-	GameManager.spawn_fish()
-
-func update_spawn_change_timer():
-	seconds_since_spawn_change += 1
 
 func _process(_delta):
-	if seconds_since_spawn_change >= 20:
-		GameManager.spawn_fish()
-		seconds_since_spawn_change = 0
+		
 	if Input.is_action_pressed("ui_cancel") and game_running == true:
 		if not pause_menu:
 			pause_menu = get_tree().get_first_node_in_group("pause")
