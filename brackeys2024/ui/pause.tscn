@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/pause.gd" id="1_jy5i7"]
 
-[node name="Pause" type="Control"]
+[node name="Pause" type="Control" groups=["pause"]]
 process_mode = 3
+top_level = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,7 +16,6 @@ size_flags_vertical = 3
 script = ExtResource("1_jy5i7")
 
 [node name="Panel" type="Panel" parent="."]
-process_mode = 3
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -31,7 +31,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Main" type="VBoxContainer" parent="Panel"]
-process_mode = 3
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,10 +47,20 @@ text = "Paused"
 horizontal_alignment = 1
 
 [node name="Resume" type="Button" parent="Panel/Main"]
-process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Resume"
+
+[node name="HSeparator" type="HSeparator" parent="Panel/Main"]
+layout_mode = 2
+
+[node name="ResetButton" type="Button" parent="Panel/Main"]
+layout_mode = 2
+tooltip_text = "You will lose all your fish!"
+text = "Reset Boat"
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/Main"]
+layout_mode = 2
 
 [node name="Volume" type="HBoxContainer" parent="Panel/Main"]
 layout_mode = 2
@@ -64,21 +73,21 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="Panel/Main/Volume"]
-process_mode = 3
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
-value = 100.0
+max_value = 10.0
+value = 10.0
 rounded = true
 ticks_on_borders = true
 
 [node name="ExitGame" type="Button" parent="Panel/Main"]
-process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Exit To Menu"
 
 [connection signal="pressed" from="Panel/Main/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Panel/Main/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="value_changed" from="Panel/Main/Volume/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="Panel/Main/ExitGame" to="." method="_on_exit_game_pressed"]

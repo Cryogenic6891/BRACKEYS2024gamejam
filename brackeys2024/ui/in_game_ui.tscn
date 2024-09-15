@@ -1,9 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cuemfwoglv24y"]
+[gd_scene load_steps=2 format=3 uid="uid://cgkr7trgkgpcg"]
 
 [ext_resource type="Script" path="res://scripts/in_game_ui.gd" id="1_pr2sf"]
 
 [node name="GameUI" type="Control"]
-process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1280.0
@@ -13,9 +12,9 @@ size_flags_vertical = 3
 script = ExtResource("1_pr2sf")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
-offset_right = 178.0
-offset_bottom = 102.0
+layout_mode = 0
+offset_right = 199.0
+offset_bottom = 255.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10

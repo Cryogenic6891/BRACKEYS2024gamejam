@@ -7,12 +7,12 @@ extends RigidBody3D
 
 # Movement
 var move_speed: float = 5.0  # Speed of forward/backward movement
-var rotation_speed: float = 2000  # Speed of rotation (turning)
-var acceleration_forward: float = 75000  # Acceleration forward
-var acceleration_backward: float = 12000 # Acceleration backward
+var rotation_speed: float = 200  # Speed of rotation (turning)
+var acceleration_forward: float = 7500  # Acceleration forward
+var acceleration_backward: float = 1200 # Acceleration backward
 
 # Buoyancy
-var float_force: float = 16
+var float_force: float = 1.3
 var water_drag: float = 0.028
 var water_angular_drag: float = 0.05
 const water_height: float = 0.0
@@ -20,12 +20,20 @@ var is_submerged: bool = false
 @export var water: MeshInstance3D
 
 # Stabilization
-var stabilization_force: float = 2000
+var stabilization_force: float = 200
 var is_capsized: bool = false
 var capsized_timer: float = 0.0
 var capsized_threshold: float = 5.0
 
+func _ready():
+	UI.connect("volume_changed",update_ship_volume)
+
+func update_ship_volume():
+	ship_audio_player.volume_db = linear_to_db(UI.volume)
+	
+
 func _physics_process(delta):
+	ship_audio_player.volume_db = linear_to_db(UI.volume)
 	is_submerged = false
 	var depth = water.update_wave_heights(global_position) - global_position.y
 	if depth > 0:
@@ -100,3 +108,4 @@ func update_player_audio(audio_name: String):
 	if audio_name != ship_audio_player["parameters/switch_to_clip"]:
 		ship_audio_player.play()
 		ship_audio_player["parameters/switch_to_clip"] = audio_name
+	

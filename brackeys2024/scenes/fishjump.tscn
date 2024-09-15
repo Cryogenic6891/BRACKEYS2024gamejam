@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc85xmotgkl3r"]
+
+[ext_resource type="Texture2D" uid="uid://bgt27l8ln1hux" path="res://assets/textures/Small Fish.png" id="1_1gyp2"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g36do"]
+emission_shape = 1
+emission_sphere_radius = 2.0
+angle_min = -175.4
+angle_max = -7.29999
+direction = Vector3(0, 1, 0)
+spread = 27.766
+initial_velocity_min = 4.0
+initial_velocity_max = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6f7jl"]
+transparency = 1
+albedo_texture = ExtResource("1_1gyp2")
+billboard_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_60fgv"]
+material = SubResource("StandardMaterial3D_6f7jl")
+orientation = 2
+
+[node name="GPUParticles3D" type="GPUParticles3D"]
+process_material = SubResource("ParticleProcessMaterial_g36do")
+draw_pass_1 = SubResource("PlaneMesh_60fgv")

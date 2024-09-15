@@ -68,7 +68,8 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 4
-value = 100.0
+max_value = 10.0
+value = 10.0
 rounded = true
 ticks_on_borders = true
 
