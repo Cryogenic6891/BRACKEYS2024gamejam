@@ -1,9 +1,10 @@
 extends RigidBody3D
 
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-@onready var ship_audio_player: AudioStreamPlayer = $AudioStreamPlayer
-@onready var toot_audio_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
+@onready var ship_audio_player: AudioStreamPlayer = $Movement_AudioStreamPlayer
+@onready var toot_audio_player: AudioStreamPlayer3D = $Honk_AudioStreamPlayer3D
+@onready var fishing_audio_player: AudioStreamPlayer3D = $Fishing_AudioStreamPlayer3D
 
 # Movement
 var move_speed: float = 5.0  # Speed of forward/backward movement
@@ -25,13 +26,16 @@ var is_capsized: bool = false
 var capsized_timer: float = 0.0
 var capsized_threshold: float = 5.0
 
+
+var is_fishing
 func _ready():
 	UI.connect("volume_changed",update_ship_volume)
-
+	is_fishing = false
+	
 func update_ship_volume():
 	ship_audio_player.volume_db = linear_to_db(UI.volume)
 	
-
+	
 func _physics_process(delta):
 	ship_audio_player.volume_db = linear_to_db(UI.volume)
 	is_submerged = false
@@ -50,6 +54,11 @@ func _physics_process(delta):
 		toot_audio_player.play()
 		
 	
+		
+var forward_input
+var turn_input
+var torque
+
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if not is_submerged:
 		return
@@ -60,20 +69,29 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	var forward_input = Input.get_action_strength("ui_up") - Input.get_action_strength("ui_down")
 	var turn_input = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
 	
-	# rotation as torque
-	if turn_input != 0:
-		var torque = Vector3.UP * turn_input * rotation_speed
-		apply_torque_impulse(torque * delta)
 	
 	# forward direction based on rotation
 	var forward_direction = -transform.basis.z
 	
-	if forward_input > 0: # forward acceleration
-		var forward_force = forward_direction * forward_input * acceleration_forward
-		apply_central_force(forward_force * delta)
-	elif forward_input <0: # backward acceleration
-		var backward_force = forward_direction * forward_input * acceleration_backward
-		apply_central_force(backward_force * delta)
+	
+	if not is_fishing:
+		# rotation as torque
+		if turn_input != 0:
+			torque = Vector3.UP * turn_input * rotation_speed
+			apply_torque_impulse(torque * delta)
+			
+		if forward_input > 0: # forward acceleration
+			var forward_force = forward_direction * forward_input * acceleration_forward
+			apply_central_force(forward_force * delta)
+		elif forward_input <0: # backward acceleration
+			var backward_force = forward_direction * forward_input * acceleration_backward
+			apply_central_force(backward_force * delta)
+	
+	else:
+		forward_input = lerp(forward_input, 0.0, 1)
+		turn_input = lerp(turn_input, 0.0, 1)
+		torque = lerp(torque, Vector3(0.0, 0.0, 0.0), 1)
+
 
 	if is_submerged: #smoothed upwards buoyancy
 		state.linear_velocity *= 1 - water_drag
