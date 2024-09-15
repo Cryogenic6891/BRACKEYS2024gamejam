@@ -296,6 +296,7 @@ shadow_mesh = SubResource("ArrayMesh_8y36n")
 [node name="Map 1" type="Node3D"]
 
 [node name="Ship" parent="." node_paths=PackedStringArray("water") instance=ExtResource("1_rluhv")]
+transform = Transform3D(-0.999359, 0, 0.0358066, 0, 1, 0, -0.0358066, 0, -0.999359, 25.1549, 0, 21.1607)
 water = NodePath("../Water")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." groups=["skylight"]]
@@ -332,8 +333,7 @@ data = {
 }
 
 [node name="Harbour" parent="." instance=ExtResource("15_xnmgw")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 59.3567, 5.17844, -16.7822)
-script = null
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 67.451, 0, -15.6833)
 
 [node name="Rocks" type="Node3D" parent="."]
 
@@ -2108,6 +2108,5 @@ unique_name_in_owner = true
 handle_input_locally = false
 render_target_update_mode = 0
 
-[editable path="Harbour"]
 [editable path="Foliage/Flowers"]
 [editable path="Foliage/Shrubs"]

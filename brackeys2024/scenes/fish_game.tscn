@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/fish_game.gd" id="1_rr6hl"]
 [ext_resource type="Texture2D" uid="uid://crbm6eg46g5vi" path="res://assets/textures/Hook.png" id="2_7ltu2"]
-[ext_resource type="PackedScene" uid="uid://p1bpuo11ick5" path="res://scenes/fish_spawner.tscn" id="3_4mnn3"]
+[ext_resource type="PackedScene" path="res://scenes/fish_spawner.tscn" id="3_4mnn3"]
 [ext_resource type="AudioStream" uid="uid://dxdqmsrjf4u8v" path="res://sounds/SFX/Fishing SFX/Fishing Catch A.wav" id="4_wlcot"]
 [ext_resource type="AudioStream" uid="uid://lxxnyvxe52js" path="res://sounds/SFX/Fishing SFX/Fishing Crit Catch A.wav" id="5_n87wr"]
 [ext_resource type="AudioStream" uid="uid://byf6gjc8kayex" path="res://sounds/SFX/Fishing SFX/Fishing Line Hit A.wav" id="6_15iol"]

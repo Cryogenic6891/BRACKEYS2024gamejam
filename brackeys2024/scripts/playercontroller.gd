@@ -54,7 +54,6 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("TOOT"):
 		toot_audio_player.play()
 		
-	
 		
 var forward_input
 var turn_input
