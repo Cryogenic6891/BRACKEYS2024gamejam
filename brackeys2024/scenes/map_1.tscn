@@ -15,6 +15,14 @@
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="14_2yr2j"]
 [ext_resource type="PackedScene" uid="uid://bu6jcrs27qwy3" path="res://scenes/harbour.tscn" id="15_xnmgw"]
 
+[ext_resource type="PackedScene" path="res://scenes/fish_area.tscn" id="13_yc2fi"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="14_2yr2j"]
+[ext_resource type="PackedScene" uid="uid://bu6jcrs27qwy3" path="res://scenes/harbour.tscn" id="15_xnmgw"]
+
+[ext_resource type="PackedScene" uid="uid://ob2odsgwsktd" path="res://scenes/fish_area.tscn" id="13_yc2fi"]
+[ext_resource type="PackedScene" uid="uid://tr0qiaveasii" path="res://ui/pause.tscn" id="14_tjfr6"]
+
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1fyuw"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -2044,6 +2052,10 @@ skeleton = NodePath("")
 
 [node name="FishArea" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.3002, 5.04966, 80.7379)
+
+[node name="FishArea" parent="." groups=["fishspawn"] instance=ExtResource("13_yc2fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.2986, 0, 80.7379)
+
 
 [node name="FishArea2" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.738, 0, 16.8399)

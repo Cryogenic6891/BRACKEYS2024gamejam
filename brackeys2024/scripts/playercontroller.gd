@@ -2,9 +2,11 @@ extends RigidBody3D
 
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+
 @onready var ship_audio_player: AudioStreamPlayer = $Movement_AudioStreamPlayer
 @onready var toot_audio_player: AudioStreamPlayer3D = $Honk_AudioStreamPlayer3D
 @onready var fishing_audio_player: AudioStreamPlayer3D = $Fishing_AudioStreamPlayer3D
+
 
 # Movement
 var move_speed: float = 5.0  # Speed of forward/backward movement
@@ -53,11 +55,13 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("TOOT"):
 		toot_audio_player.play()
 		
+
 	
 		
 var forward_input
 var turn_input
 var torque
+
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if not is_submerged:

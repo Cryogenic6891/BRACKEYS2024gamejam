@@ -18,5 +18,10 @@ shape = SubResource("CylinderShape3D_eryfr")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_3pq22")
 
+
+[node name="GPUParticles3D" parent="." instance=ExtResource("2_ytof3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.69211, 0)
+
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
