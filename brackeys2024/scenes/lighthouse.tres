@@ -46,7 +46,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-823.014, -168.02)
 modes/depth_draw = 1
 nodes/fragment/0/position = Vector2(720, 240)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_qjwfa")

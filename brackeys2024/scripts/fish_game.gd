@@ -43,13 +43,6 @@ func monitor_end_of_minigame() -> void:
 		
 		player.is_fishing = false
 		
-
-		
-		player.is_fishing = false
-		
-
-		UI.score += score
-
 		queue_free()
 
 func update_score_label() -> void:
