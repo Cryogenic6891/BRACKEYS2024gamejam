@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcbpk7yd7aqv7"]
+[gd_scene load_steps=8 format=3 uid="uid://dcbpk7yd7aqv7"]
 
 [ext_resource type="Script" path="res://scripts/fish_game.gd" id="1_rr6hl"]
 [ext_resource type="Texture2D" uid="uid://crbm6eg46g5vi" path="res://assets/textures/Hook.png" id="2_7ltu2"]
-[ext_resource type="PackedScene" uid="uid://p1bpuo11ick5" path="res://scenes/fish_spawner.tscn" id="3_4mnn3"]
+[ext_resource type="PackedScene" path="res://scenes/fish_spawner.tscn" id="3_4mnn3"]
+[ext_resource type="AudioStream" uid="uid://dxdqmsrjf4u8v" path="res://sounds/SFX/Fishing SFX/Fishing Catch A.wav" id="4_wlcot"]
+[ext_resource type="AudioStream" uid="uid://lxxnyvxe52js" path="res://sounds/SFX/Fishing SFX/Fishing Crit Catch A.wav" id="5_n87wr"]
+[ext_resource type="AudioStream" uid="uid://byf6gjc8kayex" path="res://sounds/SFX/Fishing SFX/Fishing Line Hit A.wav" id="6_15iol"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_01lcp"]
 radius = 45.0
@@ -32,7 +35,8 @@ metadata/_edit_use_anchors_ = true
 [node name="CaptureArea" type="Area2D" parent="."]
 collision_layer = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="CaptureArea"]
+[node name="Hook_Sprite2D" type="Sprite2D" parent="CaptureArea"]
+unique_name_in_owner = true
 position = Vector2(3, -72)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_7ltu2")
@@ -45,6 +49,15 @@ shape = SubResource("CapsuleShape2D_01lcp")
 
 [node name="FishSpawner" parent="." instance=ExtResource("3_4mnn3")]
 position = Vector2(650, 0)
+
+[node name="Catch_AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wlcot")
+
+[node name="Crit_AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_n87wr")
+
+[node name="Miss_AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_15iol")
 
 [connection signal="area_entered" from="CaptureArea" to="." method="_on_capture_area_area_entered"]
 [connection signal="area_exited" from="CaptureArea" to="." method="_on_capture_area_area_exited"]

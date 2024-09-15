@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dxdqmsrjf4u8v"
+path="res://.godot/imported/Fishing Catch A.wav-cb95912769750ee6f3e262a979958f53.sample"
+
+[deps]
+
+source_file="res://sounds/SFX/Fishing SFX/Fishing Catch A.wav"
+dest_files=["res://.godot/imported/Fishing Catch A.wav-cb95912769750ee6f3e262a979958f53.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

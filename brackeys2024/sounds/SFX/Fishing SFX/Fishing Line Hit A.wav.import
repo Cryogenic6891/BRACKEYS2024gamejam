@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://byf6gjc8kayex"
+path="res://.godot/imported/Fishing Line Hit A.wav-82dd68e37737a1ae1febe96e55e93ccb.sample"
+
+[deps]
+
+source_file="res://sounds/SFX/Fishing SFX/Fishing Line Hit A.wav"
+dest_files=["res://.godot/imported/Fishing Line Hit A.wav-82dd68e37737a1ae1febe96e55e93ccb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
