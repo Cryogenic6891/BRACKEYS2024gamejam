@@ -79,14 +79,16 @@ func fish_point_calculator(fishes) -> void:
 	print("FISH CAUGHT! A " + str(fish_score) + " Pointer! With a value of: " + str(fishes.fish_value))
 	score += fish_score * fishes.fish_value
 	
-func fish_location_calculator(fishes):
-	var fish_loc = (100 - abs(-fishes.position.x-650))/100
-	return fish_loc
-	
 	if fish_score > 0.90:
 		crit_audio_player.play()
 	else:
 		catch_audio_player.play()
+		
+func fish_location_calculator(fishes):
+	var fish_loc = (100 - abs(-fishes.position.x-650))/100
+	return fish_loc
+
+	
 	
 
 func _on_capture_area_area_entered(area: Area2D) -> void:
