@@ -6,10 +6,12 @@ var ui = preload("res://ui/in_game_ui.tscn")
 var tidal_wave = preload("res://scenes/tidal_moving.tscn")
 var hurricane = preload("res://scenes/hurricane_moving.tscn")
 
+var player_pos = Vector3(26,0,26)
+
 var phase = 1
 
 var in_game_ui
-var levels:Dictionary = {1:{"scene":"res://scenes/map_1.tscn","timer":1,"goal":10000}}
+var levels:Dictionary = {1:{"scene":"res://scenes/map_1.tscn","timer":12,"goal":10000}}
 @onready var viewport_width: float = ProjectSettings.get_setting("display/window/size/viewport_width")
 @onready var viewport_height: float = ProjectSettings.get_setting("display/window/size/viewport_height")
 var tutorial = true
@@ -19,6 +21,7 @@ var tide_spawns = []
 var tide_chance = 0.0
 var hurricane_spawns = []
 var hurricane_chance = 0.0
+var hurricane_num = 0
 
 func start_level(level):
 	if not level == 1:
@@ -104,8 +107,11 @@ func spawn_tidal_wave():
 	add_child(new_tide)
 
 func spawn_hurricane():
-	if hurricane_spawns.is_empty():
-		hurricane_spawns.append_array(get_tree().get_first_node_in_group("hurricanespawn").get_children())
+	if hurricane_spawns.is_empty() and hurricane_num <= 2:
+		hurricane_spawns.append_array(get_tree().get_nodes_in_group("hurricanespawn"))
 	var new_hurricane = hurricane.instantiate()
 	var spawn_loc = hurricane_spawns.pick_random()
-	print("hurricane spawned")
+	new_hurricane.transform.origin = spawn_loc.global_position
+	new_hurricane.tidal_direction = Vector3.ZERO
+	add_child(new_hurricane)
+	hurricane_num +=1
