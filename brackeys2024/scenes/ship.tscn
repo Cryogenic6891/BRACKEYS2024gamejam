@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://roxbmiuvscyn"]
+[gd_scene load_steps=18 format=3 uid="uid://roxbmiuvscyn"]
 
 [ext_resource type="Script" path="res://scripts/playercontroller.gd" id="1_ep2o1"]
 [ext_resource type="PackedScene" uid="uid://b6t02aqwvkdu6" path="res://assets/Fishing Boat.fbx" id="2_kvvvr"]
@@ -76,7 +76,15 @@ color_ramp = SubResource("GradientTexture1D_tmd56")
 anim_speed_min = 6.0
 anim_speed_max = 12.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ce41n"]
+albedo_color = Color(0.337812, 0.526588, 0.948227, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
 [sub_resource type="SphereMesh" id="SphereMesh_xuwga"]
+material = SubResource("StandardMaterial3D_ce41n")
 
 [node name="Ship" type="RigidBody3D" groups=["player"]]
 collision_layer = 3

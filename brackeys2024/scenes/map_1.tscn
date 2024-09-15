@@ -2105,8 +2105,5 @@ unique_name_in_owner = true
 handle_input_locally = false
 render_target_update_mode = 0
 
-[node name="Fish Bubbles Location" parent="." instance=ExtResource("15_ilbfp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 0, 0)
-
 [editable path="Foliage/Flowers"]
 [editable path="Foliage/Shrubs"]
