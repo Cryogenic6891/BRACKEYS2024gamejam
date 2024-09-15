@@ -13,6 +13,10 @@ config_version=5
 config/name="Stormbound"
 run/main_scene="res://ui/title_screen.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/image="res://assets/textures/DALL·E 2024-09-15 01.18.54 - A cartoonish, low-poly style thumbnail for a game called 'Stormbound.' The image should feature a stylized boat facing a large, exaggerated tidal wave.png"
+config/icon="res://assets/textures/anchor.png"
+config/macos_native_icon="res://assets/textures/anchor.icns"
+config/windows_native_icon="res://assets/textures/anchor.ico"
 
 [autoload]
 
