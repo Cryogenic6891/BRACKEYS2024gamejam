@@ -6,7 +6,7 @@ extends Node2D
 @onready var crit_audio_player: AudioStreamPlayer = $Crit_AudioStreamPlayer
 @onready var miss_audio_player: AudioStreamPlayer = $Miss_AudioStreamPlayer
 
-
+var player
 var capture_area: Area2D
 var is_in_zone = false
 var fish: Area2D
@@ -23,6 +23,7 @@ func _ready() -> void:
 	hook_position = hook.position
 	hook_rotation = hook.rotation
 
+	player = get_tree().get_first_node_in_group("player")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -32,6 +33,7 @@ func _process(_delta: float) -> void:
 	
 func monitor_end_of_minigame() -> void:
 	if total_fish_spawned == total_fish_this_level:
+		player.is_fishing = false
 		var subview_port = get_parent().get_node("%SubViewport")
 		var game_view = subview_port.get_parent()
 		game_view.visible = false
