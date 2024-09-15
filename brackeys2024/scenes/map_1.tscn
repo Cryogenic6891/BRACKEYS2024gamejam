@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cutq4aarlsrq3" path="res://assets/textures/Flowers Yellow.png" id="10_8fme7"]
 [ext_resource type="Texture2D" uid="uid://drmkx2qgys5je" path="res://assets/textures/Flowers Blue.png" id="11_0scix"]
 [ext_resource type="PackedScene" uid="uid://ctw2bqhu48ksm" path="res://assets/Shrubs.fbx" id="12_cdt2d"]
-[ext_resource type="PackedScene" uid="uid://ob2odsgwsktd" path="res://scenes/fish_area.tscn" id="13_yc2fi"]
+[ext_resource type="PackedScene" uid="uid://c6ufk4dgu7otv" path="res://scenes/fish_area.tscn" id="13_yc2fi"]
 [ext_resource type="PackedScene" uid="uid://bu6jcrs27qwy3" path="res://scenes/harbour.tscn" id="15_xnmgw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1fyuw"]
@@ -294,7 +294,8 @@ shadow_mesh = SubResource("ArrayMesh_8y36n")
 
 [node name="Map 1" type="Node3D"]
 
-[node name="Ship" parent="." instance=ExtResource("1_rluhv")]
+[node name="Ship" parent="." node_paths=PackedStringArray("water") instance=ExtResource("1_rluhv")]
+water = NodePath("../Water")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." groups=["skylight"]]
 transform = Transform3D(-0.328744, 0.2982, 0.896105, 0.801202, 0.590405, 0.0974568, -0.500003, 0.749999, -0.43301, 0, 289.685, 0)
@@ -305,10 +306,11 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." groups=["environment"]]
 environment = SubResource("Environment_ns4ja")
 
-[node name="TopCamera" type="Camera3D" parent="."]
+[node name="TopCamera" type="Camera3D" parent="." node_paths=PackedStringArray("player_node")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 22.0064, 49.5378)
 current = true
 script = ExtResource("1_c8ffa")
+player_node = NodePath("../Ship")
 
 [node name="Water" parent="." instance=ExtResource("3_8cxwg")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -172.5, 0, 163)
