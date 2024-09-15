@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://cfw585he2plsg"]
+[gd_scene load_steps=40 format=4 uid="uid://cfw585he2plsg"]
 
 [ext_resource type="Script" path="res://scripts/top_camera.gd" id="1_c8ffa"]
 [ext_resource type="PackedScene" uid="uid://roxbmiuvscyn" path="res://scenes/ship.tscn" id="1_rluhv"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ctw2bqhu48ksm" path="res://assets/Shrubs.fbx" id="12_cdt2d"]
 [ext_resource type="PackedScene" uid="uid://c6ufk4dgu7otv" path="res://scenes/fish_area.tscn" id="13_yc2fi"]
 [ext_resource type="PackedScene" uid="uid://tr0qiaveasii" path="res://ui/pause.tscn" id="14_5femc"]
+[ext_resource type="PackedScene" uid="uid://b7e5svgyis1pw" path="res://scenes/fish_bubbles.tscn" id="15_ilbfp"]
 [ext_resource type="PackedScene" uid="uid://bu6jcrs27qwy3" path="res://scenes/harbour.tscn" id="15_xnmgw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1fyuw"]
@@ -2107,6 +2108,9 @@ grow_vertical = 2
 unique_name_in_owner = true
 handle_input_locally = false
 render_target_update_mode = 0
+
+[node name="Fish Bubbles Location" parent="." instance=ExtResource("15_ilbfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 0, 0)
 
 [editable path="Foliage/Flowers"]
 [editable path="Foliage/Shrubs"]

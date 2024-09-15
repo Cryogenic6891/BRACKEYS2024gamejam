@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://roxbmiuvscyn"]
+[gd_scene load_steps=17 format=3 uid="uid://roxbmiuvscyn"]
 
 [ext_resource type="Script" path="res://scripts/playercontroller.gd" id="1_ep2o1"]
 [ext_resource type="PackedScene" uid="uid://b6t02aqwvkdu6" path="res://assets/Fishing Boat.fbx" id="2_kvvvr"]
@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://ddjdx81lwu4s5" path="res://sounds/SFX/Fishing SFX/Fishing Line Hit E.wav" id="4_ase7r"]
 [ext_resource type="AudioStream" uid="uid://c5gmqpbkvyeb1" path="res://sounds/SFX/Diesel Engine Loud Loop.wav" id="4_o1ue5"]
 [ext_resource type="AudioStream" uid="uid://cigh6j4x6hlcj" path="res://sounds/SFX/Train Horn.wav" id="5_78cmw"]
-[ext_resource type="PackedScene" path="res://scenes/smokepuff.tscn" id="6_lt0jf"]
+[ext_resource type="PackedScene" uid="uid://cm6lh7er73l4" path="res://scenes/smokepuff.tscn" id="6_lt0jf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jip00"]
 radius = 8.5
@@ -40,19 +40,41 @@ Vector2i(1, 0): {
 clip_count = 2
 clip_0/name = &"CASTING"
 clip_0/stream = ExtResource("3_icwva")
-clip_0/auto_advance = 0
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
 clip_1/name = &"SPLOOSH"
 clip_1/stream = ExtResource("4_ase7r")
 clip_1/auto_advance = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46lja"]
+transparency = 1
+albedo_color = Color(0.343993, 0.546017, 1, 0.407843)
+rim = 0.0
+rim_tint = 1.0
+
+[sub_resource type="Gradient" id="Gradient_kbct3"]
+offsets = PackedFloat32Array(0, 0.622727)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tmd56"]
+gradient = SubResource("Gradient_kbct3")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fj4pg"]
 emission_shape = 1
 emission_sphere_radius = 1.0
 direction = Vector3(0, 0, 1)
+spread = 30.0
 flatness = 1.0
 initial_velocity_min = 86.29
 initial_velocity_max = 86.29
-gravity = Vector3(0, 0, 0)
+gravity = Vector3(0, -50, 0)
+damping_min = 20.0
+damping_max = 50.0
+scale_min = 0.5
+scale_max = 5.0
+color_ramp = SubResource("GradientTexture1D_tmd56")
+anim_speed_min = 6.0
+anim_speed_max = 12.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_xuwga"]
 
@@ -79,10 +101,12 @@ volume_db = 25.0
 
 [node name="Fishing_AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamInteractive_66eb4")
-volume_db = -20.0
+volume_db = 40.0
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-visible = false
+transform = Transform3D(1, 0, 0, 0, 0.949228, 0.314589, 0, -0.314589, 0.949228, 0, 0.243687, 15.9469)
+material_override = SubResource("StandardMaterial3D_46lja")
+emitting = false
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_fj4pg")
 draw_pass_1 = SubResource("SphereMesh_xuwga")

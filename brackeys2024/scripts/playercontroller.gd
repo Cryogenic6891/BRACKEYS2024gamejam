@@ -6,6 +6,8 @@ extends RigidBody3D
 @onready var toot_audio_player: AudioStreamPlayer3D = $Honk_AudioStreamPlayer3D
 @onready var fishing_audio_player: AudioStreamPlayer3D = $Fishing_AudioStreamPlayer3D
 
+@onready var water_splash: GPUParticles3D = $GPUParticles3D
+
 # Movement
 var move_speed: float = 5.0  # Speed of forward/backward movement
 var rotation_speed: float = 200  # Speed of rotation (turning)
@@ -47,8 +49,11 @@ func _physics_process(delta):
 	check_capsized(delta)
 	
 	if Input.is_action_pressed("ui_up"):
-		update_player_audio("MOVING")
+		if is_fishing == false:
+			water_splash.emitting = true
+			update_player_audio("MOVING")
 	else:
+		water_splash.emitting = false
 		update_player_audio("IDLE")
 	
 	if Input.is_action_just_pressed("TOOT"):
@@ -75,6 +80,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	
 	
 	if not is_fishing:
+		
 		# rotation as torque
 		if turn_input != 0:
 			torque = Vector3.UP * turn_input * rotation_speed
@@ -88,6 +94,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 			apply_central_force(backward_force * delta)
 	
 	else:
+		
 		forward_input = lerp(forward_input, 0.0, 1)
 		turn_input = lerp(turn_input, 0.0, 1)
 		torque = lerp(torque, Vector3(0.0, 0.0, 0.0), 1)
