@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://cfw585he2plsg"]
+[gd_scene load_steps=39 format=4 uid="uid://cfw585he2plsg"]
 
 [ext_resource type="Script" path="res://scripts/top_camera.gd" id="1_c8ffa"]
 [ext_resource type="PackedScene" uid="uid://roxbmiuvscyn" path="res://scenes/ship.tscn" id="1_rluhv"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://drmkx2qgys5je" path="res://assets/textures/Flowers Blue.png" id="11_0scix"]
 [ext_resource type="PackedScene" uid="uid://ctw2bqhu48ksm" path="res://assets/Shrubs.fbx" id="12_cdt2d"]
 [ext_resource type="PackedScene" uid="uid://c6ufk4dgu7otv" path="res://scenes/fish_area.tscn" id="13_yc2fi"]
+[ext_resource type="PackedScene" uid="uid://tr0qiaveasii" path="res://ui/pause.tscn" id="14_5femc"]
 [ext_resource type="PackedScene" uid="uid://bu6jcrs27qwy3" path="res://scenes/harbour.tscn" id="15_xnmgw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1fyuw"]
@@ -2041,39 +2042,49 @@ skeleton = NodePath("")
 [node name="FishArea" parent="." groups=["fishspawn"] instance=ExtResource("13_yc2fi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.2986, 0, 80.7379)
 
-[node name="FishSpawns#FishArea2" parent="." instance=ExtResource("13_yc2fi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.738, 0, 16.8399)
+[node name="FishSpawns#FishArea2" parent="." groups=["fishspawn"] instance=ExtResource("13_yc2fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -443.842, 0, 16.8399)
 
-[node name="FishSpawns#FishArea3" parent="." instance=ExtResource("13_yc2fi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.475899, 0, 93.3229)
+[node name="FishSpawns#FishArea3" parent="." groups=["fishspawn"] instance=ExtResource("13_yc2fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7657, 0, 226.31)
 
-[node name="FishSpawns#FishArea4" parent="." instance=ExtResource("13_yc2fi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.0187, 0, 46.0869)
+[node name="FishSpawns#FishArea4" parent="." groups=["fishspawn"] instance=ExtResource("13_yc2fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234.959, 0, 181.41)
 
-[node name="TideSpawners" type="Node" parent="." groups=["tidespawn"]]
+[node name="FishSpawns#FishArea5" parent="." groups=["fishspawn"] instance=ExtResource("13_yc2fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -166.725, 0, 271.159)
 
-[node name="RIGHT" type="Marker3D" parent="TideSpawners"]
+[node name="FishSpawns#FishArea6" parent="." groups=["fishspawn"] instance=ExtResource("13_yc2fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -360.647, 0, 319.138)
+
+[node name="FishSpawns#FishArea7" parent="." groups=["fishspawn"] instance=ExtResource("13_yc2fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -445.79, 0, 140.11)
+
+[node name="FishSpawns#FishArea8" parent="." groups=["fishspawn"] instance=ExtResource("13_yc2fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -445.79, 0, -59.509)
+
+[node name="RIGHT" type="Node3D" parent="." groups=["tidespawn"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -514.636, 0, -20.4784)
 
-[node name="RIGHT2" type="Marker3D" parent="TideSpawners"]
+[node name="RIGHT2" type="Node3D" parent="." groups=["tidespawn"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -516.288, 0, 170.044)
 
-[node name="LEFT" type="Marker3D" parent="TideSpawners"]
+[node name="LEFT" type="Node3D" parent="." groups=["tidespawn"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 162.24, 0, 258.884)
 
-[node name="FORWARD" type="Marker3D" parent="TideSpawners"]
+[node name="FORWARD" type="Node3D" parent="." groups=["tidespawn"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -211.063, 0, 335.679)
 
-[node name="BACK" type="Marker3D" parent="TideSpawners"]
+[node name="BACK" type="Node3D" parent="." groups=["tidespawn"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -470.21, 0, -117.814)
 
-[node name="HurricaneSpawners" type="Node" parent="." groups=["hurricanespawn"]]
-
-[node name="Marker3D" type="Marker3D" parent="HurricaneSpawners"]
+[node name="Marker3D" type="Node3D" parent="." groups=["hurricanespawn"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -53.5849, 229.027)
 
-[node name="Marker3D2" type="Marker3D" parent="HurricaneSpawners"]
+[node name="Marker3D2" type="Node3D" parent="." groups=["hurricanespawn"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -426.768, -53.5849, -82.9234)
+
+[node name="Pause" parent="." instance=ExtResource("14_5femc")]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -2092,7 +2103,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer" groups=["subviewport"]]
 unique_name_in_owner = true
 handle_input_locally = false
 render_target_update_mode = 0

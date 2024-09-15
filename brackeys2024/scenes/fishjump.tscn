@@ -9,8 +9,8 @@ angle_min = -175.4
 angle_max = -7.29999
 direction = Vector3(0, 1, 0)
 spread = 27.766
-initial_velocity_min = 4.0
-initial_velocity_max = 16.0
+initial_velocity_min = 8.0
+initial_velocity_max = 28.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6f7jl"]
 transparency = 1
@@ -19,8 +19,10 @@ billboard_mode = 1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_60fgv"]
 material = SubResource("StandardMaterial3D_6f7jl")
+size = Vector2(10, 10)
 orientation = 2
 
 [node name="GPUParticles3D" type="GPUParticles3D"]
+lifetime = 6.0
 process_material = SubResource("ParticleProcessMaterial_g36do")
 draw_pass_1 = SubResource("PlaneMesh_60fgv")
