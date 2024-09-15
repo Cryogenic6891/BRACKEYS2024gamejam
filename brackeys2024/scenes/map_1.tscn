@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://cfw585he2plsg"]
+[gd_scene load_steps=39 format=4 uid="uid://cfw585he2plsg"]
 
 [ext_resource type="PackedScene" uid="uid://b76c418knjxm2" path="res://scenes/ship.tscn" id="1_7ejx5"]
 [ext_resource type="Script" path="res://scripts/top_camera.gd" id="1_c8ffa"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://drmkx2qgys5je" path="res://assets/textures/Flowers Blue.png" id="11_0scix"]
 [ext_resource type="PackedScene" uid="uid://ctw2bqhu48ksm" path="res://assets/Shrubs.fbx" id="12_cdt2d"]
 [ext_resource type="PackedScene" uid="uid://ob2odsgwsktd" path="res://scenes/fish_area.tscn" id="13_yc2fi"]
+[ext_resource type="PackedScene" uid="uid://tr0qiaveasii" path="res://ui/pause.tscn" id="14_tjfr6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1fyuw"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -2098,6 +2099,8 @@ grow_vertical = 2
 unique_name_in_owner = true
 handle_input_locally = false
 render_target_update_mode = 0
+
+[node name="Pause" parent="." instance=ExtResource("14_tjfr6")]
 
 [editable path="Harbour"]
 [editable path="Foliage/Flowers"]

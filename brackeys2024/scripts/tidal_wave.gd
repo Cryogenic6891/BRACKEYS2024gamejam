@@ -3,7 +3,7 @@ extends AnimatableBody3D
 var tidal_speed: float = 20
 @export var tidal_direction: Vector3 = Vector3.RIGHT
 var force_multiplier: float = 15.0
-var upward_force: float = 200.0
+var upward_force: float = 75.0
 var tumble_torque: Vector3 = Vector3(0, 50, 50)
 
 @onready var tidal_wave = $TidalWave

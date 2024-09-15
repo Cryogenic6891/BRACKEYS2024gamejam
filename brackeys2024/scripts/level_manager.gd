@@ -15,7 +15,6 @@ var levels:Dictionary = {1:{"scene":"res://scenes/map_1.tscn","timer":1,"goal":1
 var tutorial = true
 var tutorial_map = {0:"TIP:\nFind the fish shadows to catch them!",1:"TIP:\nPress space or enter when the image lines up\n with the hook", 2:"TIP:\nYou can hold up to 20 fish bring them \n to the dock to score them"}
 var pause_menu
-
 var tide_spawns = []
 var tide_chance = 0.0
 var hurricane_spawns = []
@@ -24,25 +23,29 @@ var hurricane_chance = 0.0
 func start_level(level):
 	if not level == 1:
 		tutorial = false
+	phase = 1
 	get_tree().change_scene_to_file(levels[level]["scene"])
 	StageTimer.end_stage_time = levels[level]["timer"]
 	game_running = true
 	in_game_ui = ui.instantiate()
-	pause_menu = pause.instantiate()
 	add_child(in_game_ui)
 	in_game_ui.size = Vector2(viewport_width,viewport_height)
 	in_game_ui.goal_text.text = str(levels[level]["goal"])
 	StageTimer.end_stage_time = levels[level]["timer"]
-	StageTimer.connect("phase_changed",process_phase)
-	StageTimer.connect("new_second",roll_for_hazard)
-	add_child(pause_menu)
+	if not StageTimer.get_signal_connection_list("phase_changed"):
+		StageTimer.connect("phase_changed",process_phase)
+	if not StageTimer.get_signal_connection_list("new_second"):
+		StageTimer.connect("new_second",roll_for_hazard)
 	StageTimer.start_timer()
 	if tutorial:
 		initiate_display(tutorial_map[0])
 
 func _process(_delta):
+		
 	if Input.is_action_pressed("ui_cancel") and game_running == true:
-		pause_menu.panel.visible = true
+		if not pause_menu:
+			pause_menu = get_tree().get_first_node_in_group("pause")
+		pause_menu.panel.show()
 		StageTimer.pause_timer(true)
 		get_tree().paused = true
 
@@ -68,11 +71,11 @@ func play_phase():
 			light.light_color = morning_light
 		2:
 			light.light_color = afternoon_light
-			tide_chance += 0.2
+			tide_chance += 0.05
 		3:
 			light.light_color = storm_light
-			tide_chance += 0.2
-			hurricane_chance += 0.025
+			tide_chance += 0.1
+			hurricane_chance += 0.05
 
 func roll_for_hazard():
 	var tide_check = randf_range(0,1)

@@ -177,3 +177,4 @@ libraries = {
 "": SubResource("AnimationLibrary_kl880")
 }
 autoplay = "twisting"
+speed_scale = -0.447

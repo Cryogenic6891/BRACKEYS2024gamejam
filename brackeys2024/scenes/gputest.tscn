@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://v4oq4j2ogxiw"]
+
+[ext_resource type="PackedScene" uid="uid://cc85xmotgkl3r" path="res://scenes/fishjump.tscn" id="1_5xn78"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="GPUParticles3D" parent="." instance=ExtResource("1_5xn78")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.925871, 0.377841, 0, -0.377841, 0.925871, -3.11158, 2.3184, 5.17921)
