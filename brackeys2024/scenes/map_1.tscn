@@ -1,7 +1,7 @@
-[gd_scene load_steps=39 format=4 uid="uid://cfw585he2plsg"]
+[gd_scene load_steps=38 format=4 uid="uid://cfw585he2plsg"]
 
-[ext_resource type="PackedScene" uid="uid://b76c418knjxm2" path="res://scenes/ship.tscn" id="1_7ejx5"]
 [ext_resource type="Script" path="res://scripts/top_camera.gd" id="1_c8ffa"]
+[ext_resource type="PackedScene" uid="uid://roxbmiuvscyn" path="res://scenes/ship.tscn" id="1_rluhv"]
 [ext_resource type="PackedScene" uid="uid://dadyao6gac3dr" path="res://scenes/water.tscn" id="3_8cxwg"]
 [ext_resource type="MeshLibrary" uid="uid://cvryiq1j563u4" path="res://mesh library/Map Tiles.tres" id="3_c3i77"]
 [ext_resource type="Texture2D" uid="uid://cpjd0i4142kxi" path="res://assets/textures/Colour Pallete 8x8.png" id="4_4mfrd"]
@@ -11,14 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://cutq4aarlsrq3" path="res://assets/textures/Flowers Yellow.png" id="10_8fme7"]
 [ext_resource type="Texture2D" uid="uid://drmkx2qgys5je" path="res://assets/textures/Flowers Blue.png" id="11_0scix"]
 [ext_resource type="PackedScene" uid="uid://ctw2bqhu48ksm" path="res://assets/Shrubs.fbx" id="12_cdt2d"]
-
-[ext_resource type="PackedScene" path="res://scenes/fish_area.tscn" id="13_yc2fi"]
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="14_2yr2j"]
-[ext_resource type="PackedScene" uid="uid://bu6jcrs27qwy3" path="res://scenes/harbour.tscn" id="15_xnmgw"]
-
 [ext_resource type="PackedScene" uid="uid://ob2odsgwsktd" path="res://scenes/fish_area.tscn" id="13_yc2fi"]
-[ext_resource type="PackedScene" uid="uid://tr0qiaveasii" path="res://ui/pause.tscn" id="14_tjfr6"]
-
+[ext_resource type="PackedScene" uid="uid://bu6jcrs27qwy3" path="res://scenes/harbour.tscn" id="15_xnmgw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1fyuw"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -300,6 +294,8 @@ shadow_mesh = SubResource("ArrayMesh_8y36n")
 
 [node name="Map 1" type="Node3D"]
 
+[node name="Ship" parent="." instance=ExtResource("1_rluhv")]
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." groups=["skylight"]]
 transform = Transform3D(-0.328744, 0.2982, 0.896105, 0.801202, 0.590405, 0.0974568, -0.500003, 0.749999, -0.43301, 0, 289.685, 0)
 light_color = Color(1, 0.637333, 0.36, 1)
@@ -309,15 +305,10 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." groups=["environment"]]
 environment = SubResource("Environment_ns4ja")
 
-[node name="TopCamera" type="Camera3D" parent="." node_paths=PackedStringArray("player_node")]
+[node name="TopCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 22.0064, 49.5378)
 current = true
 script = ExtResource("1_c8ffa")
-player_node = NodePath("../Ship")
-
-[node name="Ship" parent="." node_paths=PackedStringArray("water") instance=ExtResource("1_7ejx5")]
-transform = Transform3D(-0.997244, 0, 0.0741955, 0, 1, 0, -0.0741955, 0, -0.997244, 26.8919, 0, 23.3324)
-water = NodePath("../Water")
 
 [node name="Water" parent="." instance=ExtResource("3_8cxwg")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -172.5, 0, 163)
@@ -2045,22 +2036,17 @@ transform = Transform3D(95.6384, -58.2863, -2.54777e-06, 0, -4.89568e-06, 112, -
 mesh = SubResource("ArrayMesh_fgis2")
 skeleton = NodePath("")
 
-
 [node name="FishArea" parent="." groups=["fishspawn"] instance=ExtResource("13_yc2fi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.2986, 0, 80.7379)
 
-
-[node name="FishArea2" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
+[node name="FishSpawns#FishArea2" parent="." instance=ExtResource("13_yc2fi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.738, 0, 16.8399)
 
-[node name="FishArea3" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
+[node name="FishSpawns#FishArea3" parent="." instance=ExtResource("13_yc2fi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.475899, 0, 93.3229)
 
-[node name="FishArea4" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
+[node name="FishSpawns#FishArea4" parent="." instance=ExtResource("13_yc2fi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.0187, 0, 46.0869)
-
-[node name="Game Manager" type="Node" parent="."]
-script = ExtResource("14_2yr2j")
 
 [node name="TideSpawners" type="Node" parent="." groups=["tidespawn"]]
 

@@ -10,6 +10,7 @@ shader_parameter/tidal_height = 5.0
 shader_parameter/tidal_length = 200.0
 shader_parameter/tidal_steepness = 0.8
 shader_parameter/tidal_direction = Vector3(-1, 1, 1)
+shader_parameter/tidal_time = 1.0
 shader_parameter/crest_falloff = 2.0
 shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
 shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)

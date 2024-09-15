@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://brb8t3f02kodw"]
 
-[ext_resource type="PackedScene" uid="uid://b76c418knjxm2" path="res://scenes/ship.tscn" id="2_1rwce"]
 [ext_resource type="PackedScene" uid="uid://dadyao6gac3dr" path="res://scenes/water.tscn" id="2_4hn3y"]
 [ext_resource type="Script" path="res://scripts/top_camera.gd" id="2_wi2wd"]
 [ext_resource type="PackedScene" uid="uid://ba3fwfi84jspd" path="res://scenes/tidal_moving.tscn" id="4_awyai"]
 [ext_resource type="PackedScene" uid="uid://bfu05c0nqrmf0" path="res://scenes/hurricane_moving.tscn" id="5_dfscn"]
+[ext_resource type="PackedScene" uid="uid://roxbmiuvscyn" path="res://scenes/ship.tscn" id="5_wj5d7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3r0lv"]
 sky_top_color = Color(0.613113, 0.677007, 0.766052, 1)
@@ -27,6 +27,8 @@ fog_density = 1.0
 
 [node name="Main" type="Node3D"]
 
+[node name="Ship" parent="." instance=ExtResource("5_wj5d7")]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5kcj7")
 
@@ -34,16 +36,11 @@ environment = SubResource("Environment_5kcj7")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 22.0064, 49.5378)
 current = true
 script = ExtResource("2_wi2wd")
-player_node = NodePath("../Ship")
+player_node = NodePath("")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 light_color = Color(1, 1, 0.560784, 1)
 light_angular_distance = 3.27
-
-[node name="Ship" parent="WorldEnvironment" node_paths=PackedStringArray("water") instance=ExtResource("2_1rwce")]
-mass = 1.0
-physics_material_override = null
-water = NodePath("../../Water")
 
 [node name="Water" parent="." instance=ExtResource("2_4hn3y")]
 
