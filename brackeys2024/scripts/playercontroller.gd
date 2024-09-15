@@ -32,6 +32,7 @@ func _ready():
 	UI.connect("volume_changed",update_ship_volume)
 	is_fishing = false
 	
+	
 func update_ship_volume():
 	ship_audio_player.volume_db = linear_to_db(UI.volume)
 	
