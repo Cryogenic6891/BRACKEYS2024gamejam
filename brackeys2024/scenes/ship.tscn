@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://roxbmiuvscyn"]
+[gd_scene load_steps=11 format=3 uid="uid://roxbmiuvscyn"]
 
 [ext_resource type="Script" path="res://scripts/playercontroller.gd" id="1_ep2o1"]
 [ext_resource type="PackedScene" uid="uid://b6t02aqwvkdu6" path="res://assets/Fishing Boat.fbx" id="2_kvvvr"]
 [ext_resource type="AudioStream" uid="uid://dgowc3amrnsrp" path="res://sounds/SFX/Diesel Engine Gentle Loop.wav" id="3_vqdx2"]
 [ext_resource type="AudioStream" uid="uid://c5gmqpbkvyeb1" path="res://sounds/SFX/Diesel Engine Loud Loop.wav" id="4_o1ue5"]
 [ext_resource type="AudioStream" uid="uid://cigh6j4x6hlcj" path="res://sounds/SFX/Train Horn.wav" id="5_78cmw"]
+[ext_resource type="PackedScene" path="res://scenes/smokepuff.tscn" id="6_lt0jf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jip00"]
 radius = 8.5
@@ -75,3 +76,6 @@ visible = false
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_fj4pg")
 draw_pass_1 = SubResource("SphereMesh_xuwga")
+
+[node name="smoke" parent="." instance=ExtResource("6_lt0jf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.608, 5.20419)

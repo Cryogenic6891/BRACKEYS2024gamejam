@@ -22,7 +22,7 @@ func _process(_delta: float) -> void:
 			player.fishing_audio_player.play()
 			
 			var new_fish_game = fish_game.instantiate()
-			var subview_port = get_parent().get_node("%SubViewport")
+			var subview_port = get_tree().get_first_node_in_group("subviewport")
 			new_fish_game.position.x = subview_port.size.x / 2
 			new_fish_game.position.y = subview_port.size.y / 2
 			var game_view = subview_port.get_parent()
