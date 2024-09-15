@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgkr7trgkgpcg"]
+[gd_scene load_steps=3 format=3 uid="uid://cgkr7trgkgpcg"]
 
 [ext_resource type="Script" path="res://scripts/in_game_ui.gd" id="1_pr2sf"]
+[ext_resource type="PackedScene" uid="uid://tr0qiaveasii" path="res://ui/pause.tscn" id="2_v5rmc"]
 
 [node name="GameUI" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1280.0
@@ -126,3 +128,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Find the fish shadows to catch them!"
 horizontal_alignment = 1
+
+[node name="Pause" parent="." instance=ExtResource("2_v5rmc")]
+layout_mode = 1

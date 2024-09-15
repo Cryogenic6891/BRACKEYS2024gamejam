@@ -6,7 +6,6 @@ extends Node2D
 @onready var crit_audio_player: AudioStreamPlayer = $Crit_AudioStreamPlayer
 @onready var miss_audio_player: AudioStreamPlayer = $Miss_AudioStreamPlayer
 
-var player
 
 var capture_area: Area2D
 var is_in_zone = false
@@ -21,12 +20,9 @@ var hook_rotation
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	total_fish_spawned = $FishSpawner.fish_spawn_total
-	print(total_fish_spawned)
-	
 	hook_position = hook.position
 	hook_rotation = hook.rotation
-	
-	player = get_tree().get_first_node_in_group("player")
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -40,9 +36,7 @@ func monitor_end_of_minigame() -> void:
 		var game_view = subview_port.get_parent()
 		game_view.visible = false
 		await get_tree().create_timer(2).timeout
-		
-		player.is_fishing = false
-		
+		UI.score += score
 		queue_free()
 
 func update_score_label() -> void:
@@ -55,8 +49,6 @@ func update_score_label() -> void:
 #It also feeds the fish information to the calculator function
 func catch_fish(fishes) -> void:
 	if Input.is_action_just_pressed("space_key") && is_in_zone == true:
-		print("Space_Pressed")
-		
 		play_hook_anim()
 		
 		fish_point_calculator(fishes)
@@ -64,21 +56,12 @@ func catch_fish(fishes) -> void:
 		fish_quantity += 1
 	elif Input.is_action_just_pressed("space_key") && is_in_zone == false:
 		score -= 10
-		print("Pentalty")
-		
 		play_hook_anim()
 		miss_audio_player.play()
-		
-		score -= 1
-	else:
-		pass
 
-var fish_score
 func fish_point_calculator(fishes) -> void:
-	fish_score = fish_location_calculator(fishes)
-	print("FISH CAUGHT! A " + str(fish_score) + " Pointer! With a value of: " + str(fishes.fish_value))
+	var fish_score = fish_location_calculator(fishes)
 	score += fish_score * fishes.fish_value
-	
 	if fish_score > 0.90:
 		crit_audio_player.play()
 	else:
@@ -87,9 +70,6 @@ func fish_point_calculator(fishes) -> void:
 func fish_location_calculator(fishes):
 	var fish_loc = (100 - abs(-fishes.position.x-650))/100
 	return fish_loc
-
-	
-	
 
 func _on_capture_area_area_entered(area: Area2D) -> void:
 	is_in_zone = true

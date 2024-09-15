@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cw3mcqutyhuty"]
+[gd_scene load_steps=6 format=3 uid="uid://cw3mcqutyhuty"]
 
 [ext_resource type="Script" path="res://scripts/fish_school.gd" id="1_ly8ee"]
 [ext_resource type="PackedScene" uid="uid://cc85xmotgkl3r" path="res://scenes/fishjump.tscn" id="2_ytof3"]
+[ext_resource type="PackedScene" uid="uid://b7e5svgyis1pw" path="res://scenes/fish_bubbles.tscn" id="3_4lyfr"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_eryfr"]
 height = 40.0
@@ -22,6 +23,8 @@ mesh = SubResource("BoxMesh_3pq22")
 
 [node name="GPUParticles3D" parent="." instance=ExtResource("2_ytof3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.69211, 0)
+
+[node name="Fish Bubbles Location" parent="." instance=ExtResource("3_4lyfr")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
