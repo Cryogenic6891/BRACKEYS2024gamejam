@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7e5svgyis1pw"]
+
+[sub_resource type="Curve" id="Curve_si8nk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 1), 0.0412178, 0.0412178, 0, 0, Vector2(0.497917, 0.922925), -0.567922, -0.567922, 0, 0, Vector2(1, 0), -2.22535, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_xolhh"]
+curve = SubResource("Curve_si8nk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tek1t"]
+lifetime_randomness = 0.25
+direction = Vector3(0, 1, 0)
+spread = 25.0
+initial_velocity_min = 0.2
+initial_velocity_max = 2.0
+linear_accel_min = 0.199998
+linear_accel_max = 0.999998
+damping_max = 5.0
+scale_min = 2.5
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_xolhh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7st4"]
+transparency = 1
+albedo_color = Color(0.521569, 0.694118, 1, 0.756863)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jthti"]
+material = SubResource("StandardMaterial3D_l7st4")
+radius = 0.1
+height = 0.2
+
+[node name="Fish Bubbles Location" type="Node3D"]
+
+[node name="Fish Bubbles" type="GPUParticles3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -6.9158, 0, -6.46416)
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_tek1t")
+draw_pass_1 = SubResource("SphereMesh_jthti")
+
+[node name="Fish Bubbles2" type="GPUParticles3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 4.84019, 0, -2.57305)
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_tek1t")
+draw_pass_1 = SubResource("SphereMesh_jthti")
+
+[node name="Fish Bubbles3" type="GPUParticles3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -3.66719, 0, 4.21922)
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_tek1t")
+draw_pass_1 = SubResource("SphereMesh_jthti")
