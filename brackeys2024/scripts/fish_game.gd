@@ -40,9 +40,13 @@ func monitor_end_of_minigame() -> void:
 		var game_view = subview_port.get_parent()
 		game_view.visible = false
 		await get_tree().create_timer(2).timeout
+
 		
 		player.is_fishing = false
 		
+
+		UI.score += score
+
 		queue_free()
 
 func update_score_label() -> void:
@@ -50,6 +54,7 @@ func update_score_label() -> void:
 	var fish_count_label = $CanvasLayer/FishCountLabel
 	score_label_node.text = "Score: " + str(score)
 	fish_count_label.text = "Fish Count: " + str(fish_quantity)
+
 
 #This monitors keyboard press and provides a pentaly for pressing it whilly nilly
 #It also feeds the fish information to the calculator function

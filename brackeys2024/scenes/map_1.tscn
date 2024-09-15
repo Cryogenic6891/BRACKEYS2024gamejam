@@ -11,9 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://cutq4aarlsrq3" path="res://assets/textures/Flowers Yellow.png" id="10_8fme7"]
 [ext_resource type="Texture2D" uid="uid://drmkx2qgys5je" path="res://assets/textures/Flowers Blue.png" id="11_0scix"]
 [ext_resource type="PackedScene" uid="uid://ctw2bqhu48ksm" path="res://assets/Shrubs.fbx" id="12_cdt2d"]
+
 [ext_resource type="PackedScene" path="res://scenes/fish_area.tscn" id="13_yc2fi"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="14_2yr2j"]
 [ext_resource type="PackedScene" uid="uid://bu6jcrs27qwy3" path="res://scenes/harbour.tscn" id="15_xnmgw"]
+
+[ext_resource type="PackedScene" uid="uid://ob2odsgwsktd" path="res://scenes/fish_area.tscn" id="13_yc2fi"]
+[ext_resource type="PackedScene" uid="uid://tr0qiaveasii" path="res://ui/pause.tscn" id="14_tjfr6"]
+
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1fyuw"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -2040,10 +2045,10 @@ transform = Transform3D(95.6384, -58.2863, -2.54777e-06, 0, -4.89568e-06, 112, -
 mesh = SubResource("ArrayMesh_fgis2")
 skeleton = NodePath("")
 
-[node name="FishSpawns" type="Node3D" parent="."]
 
-[node name="FishArea" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.3002, 5.04966, 80.7379)
+[node name="FishArea" parent="." groups=["fishspawn"] instance=ExtResource("13_yc2fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.2986, 0, 80.7379)
+
 
 [node name="FishArea2" parent="FishSpawns" instance=ExtResource("13_yc2fi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.738, 0, 16.8399)
@@ -2099,7 +2104,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer" groups=["subviewport"]]
 unique_name_in_owner = true
 handle_input_locally = false
 render_target_update_mode = 0
