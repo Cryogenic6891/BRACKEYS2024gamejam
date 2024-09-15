@@ -15,14 +15,15 @@ func _on_body_exited(body: Node3D) -> void:
 
 func _process(_delta: float) -> void:
 	if player: #If player exist in the area allow the interact input to be pressed
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("ui_accept") and get_tree().get_first_node_in_group("subviewport").get_children().is_empty():
 			var new_fish_game = fish_game.instantiate()
-			var subview_port = get_parent().get_node("%SubViewport")
+			var subview_port = get_tree().get_first_node_in_group("subviewport")
 			new_fish_game.position.x = subview_port.size.x / 2
 			new_fish_game.position.y = subview_port.size.y / 2
 			var game_view = subview_port.get_parent()
 			game_view.visible = true
 			subview_port.add_child(new_fish_game)
+			GameManager.fish_spawns
 			queue_free()
 			# these lines will be changed $Control/SubViewportContainer/SubViewportfor our game. It should call Raz' minigame
 			#if player.objective_manager.meat_on_back.size() < 3: 

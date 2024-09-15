@@ -1,5 +1,6 @@
 extends Node
 var volume = 1
+var score = 0
 
 signal volume_changed
 

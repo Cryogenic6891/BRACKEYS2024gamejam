@@ -4,7 +4,6 @@ extends RigidBody3D
 @onready var ship_audio_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var toot_audio_player: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
-
 # Movement
 var move_speed: float = 5.0  # Speed of forward/backward movement
 var rotation_speed: float = 200  # Speed of rotation (turning)
@@ -45,11 +44,10 @@ func _physics_process(delta):
 		update_player_audio("MOVING")
 	else:
 		update_player_audio("IDLE")
-	
+
 	if Input.is_action_just_pressed("TOOT"):
 		toot_audio_player.play()
-		
-	
+
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if not is_submerged:
 		return
